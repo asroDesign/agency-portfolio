@@ -26,7 +26,9 @@ const schema = z.object({
   features: z.array(z.string()).default([]),
   liveUrl: z.string().url().optional().or(z.literal("")),
   demoUrl: z.string().url().optional().or(z.literal("")),
-  downloadUrl: z.string().url().optional().or(z.literal("")),
+  downloadUrl: z.string().optional().or(z.literal("")),
+  filePath: z.string().optional().nullable(),
+  fileName: z.string().optional().nullable(),
   published: z.boolean().default(true),
   featured: z.boolean().default(false),
 });
@@ -59,6 +61,8 @@ export async function POST(req: Request) {
         liveUrl: data.liveUrl || null,
         demoUrl: data.demoUrl || null,
         downloadUrl: data.downloadUrl || null,
+        filePath: data.filePath || null,
+        fileName: data.fileName || null,
         published: data.published,
         featured: data.featured,
       })

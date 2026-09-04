@@ -18,6 +18,7 @@ import {
   templateFaqs,
   templateUpdates,
   templateQuestions,
+  addons,
   pageMeta,
   enrollments,
   templateOrders,
@@ -319,12 +320,15 @@ const blogList = [
     slug: "why-business-needs-website",
     excerpt: "در دنیای امروز، نداشتن وب‌سایت یعنی نداشتن ویترین. در این مقاله دلایل ضرورت حضور آنلاین را بررسی می‌کنیم.",
     content:
-      "## مقدمه\n\nدر عصر دیجیتال، **اولین جایی که مشتریان به دنبال شما می‌گردند، اینترنت است**. یک وب‌سایت حرفه‌ای نه‌تنها اعتبار برند شما را بالا می‌برد، بلکه دروازه‌ای برای جذب مشتریان جدید است.\n\n## چرا وب‌سایت مهم است؟\n\n- حضور ۲۴ ساعته برای مشتریان\n- افزایش اعتماد و اعتبار برند\n- امکان فروش آنلاین و افزایش درآمد\n- بازاریابی ارزان‌تر نسبت به روش‌های سنتی\n\n> نکته: وب‌سایتی که در موبایل خوب نمایش داده نشود، بیش از نیمی از مشتریان را از دست می‌دهد.\n\n## جمع‌بندی\n\nاگر هنوز وب‌سایت ندارید، همین امروز اقدام کنید. تیم نکسا تک آماده کمک به شماست.",
+      "<h2>مقدمه</h2><p>در عصر دیجیتال، <strong>اولین جایی که مشتریان به دنبال شما می‌گردند، اینترنت است</strong>. یک وب‌سایت حرفه‌ای نه‌تنها اعتبار برند شما را بالا می‌برد، بلکه دروازه‌ای برای جذب مشتریان جدید است.</p><h2>چرا وب‌سایت مهم است؟</h2><ul><li>حضور ۲۴ ساعته برای مشتریان</li><li>افزایش اعتماد و اعتبار برند</li><li>امکان فروش آنلاین و افزایش درآمد</li><li>بازاریابی ارزان‌تر نسبت به روش‌های سنتی</li></ul><blockquote><p>نکته: وب‌سایتی که در موبایل خوب نمایش داده نشود، بیش از نیمی از مشتریان را از دست می‌دهد.</p></blockquote><h2>جمع‌بندی</h2><p>اگر هنوز وب‌سایت ندارید، همین امروز اقدام کنید. تیم نکسا تک آماده کمک به شماست.</p>",
     coverUrl:
       "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
     category: "طراحی وب",
     author: "تیم نکسا تک",
     tags: ["وب‌سایت", "کسب‌وکار", "بازاریابی"],
+    metaTitle: "چرا هر کسب‌وکاری به وب‌سایت حرفه‌ای نیاز دارد؟ | نکسا تک",
+    metaDescription: "در دنیای امروز، نداشتن وب‌سایت یعنی نداشتن ویترین. دلایل ضرورت حضور آنلاین کسب‌وکارها را بررسی می‌کنیم.",
+    keywords: "وب‌سایت, کسب‌وکار, بازاریابی, حضور آنلاین",
     published: true,
     featured: true,
   },
@@ -333,12 +337,15 @@ const blogList = [
     slug: "seo-guide-for-beginners",
     excerpt: "سئو یا بهینه‌سازی موتور جستجو چیست و چرا اهمیت دارد؟ در این راهنما قدم‌به‌قدم با اصول سئو آشنا می‌شوید.",
     content:
-      "## سئو چیست؟\n\nسئو (SEO) فرآیند بهینه‌سازی وب‌سایت برای کسب رتبه بهتر در نتایج موتورهای جستجو مانند **گوگل** است.\n\n## اصول اولیه سئو\n\n1. تحقیق کلمات کلیدی\n2. بهینه‌سازی محتوای صفحات\n3. ساخت لینک‌های داخلی و خارجی\n4. بهبود سرعت سایت\n5. ریسپانسیو بودن برای موبایل\n\n## چرا سئو مهم است؟\n\nبیش از ۹۰٪ کاربران روی لینک‌های صفحه اول گوگل کلیک می‌کنند. یعنی اگر در صفحه اول نباشید، عملاً دیده نمی‌شوید.",
+      "<h2>سئو چیست؟</h2><p>سئو (SEO) فرآیند بهینه‌سازی وب‌سایت برای کسب رتبه بهتر در نتایج موتورهای جستجو مانند <strong>گوگل</strong> است.</p><h2>اصول اولیه سئو</h2><ol><li>تحقیق کلمات کلیدی</li><li>بهینه‌سازی محتوای صفحات</li><li>ساخت لینک‌های داخلی و خارجی</li><li>بهبود سرعت سایت</li><li>ریسپانسیو بودن برای موبایل</li></ol><h2>چرا سئو مهم است؟</h2><p>بیش از ۹۰٪ کاربران روی لینک‌های صفحه اول گوگل کلیک می‌کنند. یعنی اگر در صفحه اول نباشید، عملاً دیده نمی‌شوید.</p>",
     coverUrl:
       "https://images.pexels.com/photos/270637/pexels-photo-270637.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
     category: "سئو",
     author: "پویا کاظمی",
     tags: ["سئو", "گوگل", "بازاریابی دیجیتال"],
+    metaTitle: "راهنمای کامل سئو برای مبتدیان | نکسا تک",
+    metaDescription: "آموزش قدم‌به‌قدم اصول سئو و بهینه‌سازی موتور جستجو برای کسب رتبه بهتر در گوگل.",
+    keywords: "سئو, گوگل, بهینه‌سازی, کلمات کلیدی",
     published: true,
     featured: true,
   },
@@ -347,12 +354,15 @@ const blogList = [
     slug: "nextjs-vs-react",
     excerpt: "انتخاب فریم‌ورک مناسب برای پروژه‌های وب می‌تواند سخت باشد. در این مقاله تفاوت‌های Next.js و React را بررسی می‌کنیم.",
     content:
-      "## معرفی\n\n**React** یک کتابخانه برای ساخت رابط کاربری است، در حالی که **Next.js** یک فریم‌ورک کامل بر پایه React است که امکانات بیشتری ارائه می‌دهد.\n\n## مزایای Next.js\n\n- رندر سمت سرور (SSR) و استاتیک (SSG)\n- مسیردهی مبتنی بر فایل\n- بهینه‌سازی خودکار تصاویر\n- پشتیبانی از TypeScript\n\n## چه زمانی از React استفاده کنیم؟\n\nوقتی به کنترل کامل نیاز دارید یا پروژه شما یک SPA ساده است.\n\n## جمع‌بندی\n\nبرای اکثر پروژه‌های جدید، Next.js انتخاب بهتری است.",
+      "<h2>معرفی</h2><p><strong>React</strong> یک کتابخانه برای ساخت رابط کاربری است، در حالی که <strong>Next.js</strong> یک فریم‌ورک کامل بر پایه React است که امکانات بیشتری ارائه می‌دهد.</p><h2>مزایای Next.js</h2><ul><li>رندر سمت سرور (SSR) و استاتیک (SSG)</li><li>مسیردهی مبتنی بر فایل</li><li>بهینه‌سازی خودکار تصاویر</li><li>پشتیبانی از TypeScript</li></ul><h2>چه زمانی از React استفاده کنیم؟</h2><p>وقتی به کنترل کامل نیاز دارید یا پروژه شما یک SPA ساده است.</p><h2>جمع‌بندی</h2><p>برای اکثر پروژه‌های جدید، Next.js انتخاب بهتری است.</p>",
     coverUrl:
       "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
     category: "برنامه‌نویسی",
     author: "محمد رستمی",
     tags: ["Next.js", "React", "فرانت‌اند"],
+    metaTitle: "Next.js یا React؟ راهنمای انتخاب فریم‌ورک | نکسا تک",
+    metaDescription: "مقایسه کامل Next.js و React برای انتخاب بهترین فریم‌ورک در پروژه‌های وب.",
+    keywords: "Next.js, React, فریم‌ورک, فرانت‌اند",
     published: true,
     featured: true,
   },
@@ -871,6 +881,24 @@ export async function seedDatabase() {
     for (const q of userQuestions) {
       await db.insert(templateQuestions).values({ id: newId("tq"), templateId: digiacademyTplId, userId: null, ...q });
     }
+
+    // Template-specific addons
+    const templateAddons = [
+      { name: "فایل راهنمای نصب کامل", description: "بسته آموزش ویدیویی نصب و راه‌اندازی قالب", price: 190000, type: "file", filePath: null, fileName: null },
+      { name: "پشتیبانی VIP (یک ساله)", description: "پاسخگویی سریع و نصب رایگان آپدیت‌ها", price: 490000, type: "option", filePath: null, fileName: null },
+    ];
+    for (const a of templateAddons) {
+      await db.insert(addons).values({ id: newId("adn"), templateId: digiacademyTplId, sortOrder: 0, ...a });
+    }
+  }
+
+  // Global addons (apply to all templates)
+  const globalAddons = [
+    { name: "نصب قالب توسط فروشنده", description: "تیم ما قالب را روی هاست شما نصب و راه‌اندازی می‌کند", price: 990000, type: "option", filePath: null, fileName: null },
+    { name: "لایسنس دو دامنه", description: "استفاده از قالب روی دو دامنه مختلف", price: 590000, type: "option", filePath: null, fileName: null },
+  ];
+  for (const a of globalAddons) {
+    await db.insert(addons).values({ id: newId("adn"), templateId: null, sortOrder: 0, ...a });
   }
 
   // SEO defaults

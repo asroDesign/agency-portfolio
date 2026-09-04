@@ -110,6 +110,9 @@ export const blogPosts = pgTable("blog_posts", {
   category: text("category").notNull().default("عمومی"),
   author: text("author").notNull().default("تیم نکسا تک"),
   tags: text("tags").array(),
+  metaTitle: text("meta_title"),
+  metaDescription: text("meta_description"),
+  keywords: text("keywords"),
   published: boolean("published").notNull().default(true),
   featured: boolean("featured").notNull().default(false),
   createdAt: timestamp("created_at", { withTimezone: true })
@@ -217,6 +220,8 @@ export const templates = pgTable("templates", {
   liveUrl: text("live_url"),
   demoUrl: text("demo_url"),
   downloadUrl: text("download_url"),
+  filePath: text("file_path"),
+  fileName: text("file_name"),
   sales: integer("sales").notNull().default(0),
   published: boolean("published").notNull().default(true),
   featured: boolean("featured").notNull().default(false),
@@ -224,6 +229,22 @@ export const templates = pgTable("templates", {
     .notNull()
     .defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+// ---------- Template addons ----------
+export const addons = pgTable("addons", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  description: text("description").notNull(),
+  price: integer("price").notNull().default(0),
+  type: text("type").notNull().default("option"), // "file" | "option"
+  filePath: text("file_path"),
+  fileName: text("file_name"),
+  templateId: text("template_id"), // null = global addon
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at", { withTimezone: true })
     .notNull()
     .defaultNow(),
 });
@@ -237,6 +258,7 @@ export const templateOrders = pgTable("template_orders", {
   id: text("id").primaryKey(),
   userId: text("user_id").notNull(),
   templateId: text("template_id").notNull(),
+  addonIds: text("addon_ids").array(),
   amount: integer("amount").notNull().default(0),
   status: templateOrderStatusEnum("status").notNull().default("pending"),
   authority: text("authority"),
@@ -371,6 +393,7 @@ export type Testimonial = typeof testimonials.$inferSelect;
 export type Template = typeof templates.$inferSelect;
 export type TemplateCategory = typeof templateCategories.$inferSelect;
 export type TemplateOrder = typeof templateOrders.$inferSelect;
+export type Addon = typeof addons.$inferSelect;
 export type PageSection = typeof pageSections.$inferSelect;
 export type TemplateTutorial = typeof templateTutorials.$inferSelect;
 export type TemplateFaq = typeof templateFaqs.$inferSelect;

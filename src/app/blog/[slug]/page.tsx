@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { RichText } from "@/components/rich-text";
+import { HtmlContent } from "@/components/html-content";
 import { BlogCard } from "@/components/blog-card";
 import { getPostBySlug, getPublishedPosts } from "@/lib/catalog";
 import { formatDate } from "@/lib/utils";
@@ -14,7 +14,24 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
-  return { title: post?.title ?? "مقاله", description: post?.excerpt };
+  if (!post) return { title: "مقاله" };
+
+  const title = post.metaTitle || post.title;
+  const description = post.metaDescription || post.excerpt;
+  const keywords = post.keywords ? post.keywords.split(",").map((k) => k.trim()).filter(Boolean) : post.tags;
+
+  return {
+    // absolute: true prevents the root layout template from appending "| نکسا تک" again
+    title: { absolute: title },
+    description,
+    ...(keywords?.length ? { keywords } : {}),
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      ...(post.coverUrl ? { images: [{ url: post.coverUrl }] } : {}),
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -61,7 +78,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           )}
 
           <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 dark:border-white/10 dark:bg-white/5">
-            <RichText content={post.content} />
+            <HtmlContent html={post.content} />
           </div>
 
           {post.tags && post.tags.length > 0 && (

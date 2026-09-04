@@ -10,10 +10,11 @@ import {
   templateFaqs,
   templateUpdates,
   templateQuestions,
+  addons,
   enrollments,
   templateOrders,
 } from "@/db/schema";
-import { and, asc, desc, eq, inArray, ne } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, ne, isNull, or } from "drizzle-orm";
 import { cache } from "react";
 
 // ---- Blog ----
@@ -193,6 +194,14 @@ export const getAnsweredQuestions = cache(async (templateId: string) => {
     .from(templateQuestions)
     .where(eq(templateQuestions.templateId, templateId))
     .orderBy(desc(templateQuestions.updatedAt));
+});
+
+export const getAddonsForTemplate = cache(async (templateId: string) => {
+  return db
+    .select()
+    .from(addons)
+    .where(or(isNull(addons.templateId), eq(addons.templateId, templateId)))
+    .orderBy(asc(addons.sortOrder), asc(addons.createdAt));
 });
 
 export async function getOwnedTemplates(userId: string) {

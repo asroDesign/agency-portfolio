@@ -13,13 +13,12 @@ import {
   Calendar,
   RefreshCw,
   ShieldCheck,
-  Download,
   Tag,
   MonitorSmartphone,
 } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { BuyButton } from "@/components/buy-button";
+import { PurchaseBox } from "@/components/purchase-box";
 import { TemplateGallery } from "@/components/template-gallery";
 import { TemplateAllTabs } from "@/components/template-all-tabs";
 import { TemplateCard } from "@/components/template-card";
@@ -31,6 +30,7 @@ import {
   getTemplateFaqs,
   getTemplateUpdates,
   getAnsweredQuestions,
+  getAddonsForTemplate,
 } from "@/lib/catalog";
 import { getSession } from "@/lib/auth";
 import { formatNumber, formatDate } from "@/lib/utils";
@@ -51,12 +51,13 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
   const session = await getSession();
   const owned = session ? (await getOwnedTemplateIds(session.userId)).has(template.id) : false;
 
-  const [related, tutorials, faqs, updates, userQuestions] = await Promise.all([
+  const [related, tutorials, faqs, updates, userQuestions, addons] = await Promise.all([
     getRelatedTemplates(template.id, template.categoryId),
     getTemplateTutorials(template.id),
     getTemplateFaqs(template.id),
     getTemplateUpdates(template.id),
     getAnsweredQuestions(template.id),
+    getAddonsForTemplate(template.id),
   ]);
 
   const canSubmitSupport = !!(session && (owned || template.price <= 0));
@@ -171,12 +172,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
                 </div>
 
                 <div className="mt-5 space-y-3">
-                  <BuyButton
-                    templateId={template.id}
-                    price={template.price}
-                    owned={owned}
-                    downloadUrl={template.downloadUrl}
-                  />
+                  <PurchaseBox templateId={template.id} price={template.price} owned={owned} addons={addons} />
                   <div className="grid grid-cols-2 gap-2">
                     {template.liveUrl && (
                       <a href={template.liveUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:border-indigo-300 hover:text-indigo-600 dark:border-white/10 dark:text-slate-300">
@@ -201,11 +197,6 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
                   </ul>
                 </div>
 
-                {template.downloadUrl && owned && (
-                  <a href={template.downloadUrl} target="_blank" rel="noreferrer" className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white">
-                    <Download className="h-4 w-4" /> دانلود قالب
-                  </a>
-                )}
               </div>
             </div>
           </aside>

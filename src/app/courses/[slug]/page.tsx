@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { CoursePlayer } from "@/components/course-player";
 import { EnrollButton } from "@/components/enroll-button";
+import { HtmlContent } from "@/components/html-content";
 import { getCourseBySlug, getCourseSessions, getEnrolledCourseIds } from "@/lib/catalog";
 import { getSession } from "@/lib/auth";
 import { formatNumber } from "@/lib/utils";
@@ -43,9 +44,9 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                 <img src={course.coverUrl} alt={course.title} className="mb-5 aspect-[16/9] w-full rounded-2xl object-cover" />
               ) : null}
               <h1 className="text-2xl font-extrabold leading-tight">{course.title}</h1>
-              <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                {course.description}
-              </p>
+              <div className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                <HtmlContent html={course.description} />
+              </div>
 
               <div className="mt-5 grid grid-cols-2 gap-3">
                 <div className="rounded-2xl bg-slate-50 p-3 text-center dark:bg-white/5">

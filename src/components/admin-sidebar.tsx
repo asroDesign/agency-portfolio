@@ -21,7 +21,6 @@ import {
   LayoutTemplate,
   LifeBuoy,
   Search,
-  BookOpen,
   MessageCircleQuestion,
 } from "lucide-react";
 import { Logo } from "@/components/logo";
@@ -34,7 +33,6 @@ const nav = [
   { href: "/admin/blog", label: "وبلاگ", icon: Newspaper },
   { href: "/admin/courses", label: "دوره‌ها", icon: GraduationCap },
   { href: "/admin/templates", label: "قالب‌ها", icon: Puzzle },
-  { href: "/admin/template-content", label: "محتوای قالب‌ها", icon: BookOpen },
   { href: "/admin/support", label: "تیکت‌های پشتیبانی", icon: LifeBuoy },
   { href: "/admin/questions", label: "سوالات کاربران", icon: MessageCircleQuestion },
   { href: "/admin/testimonials", label: "نظرات مشتریان", icon: Star },

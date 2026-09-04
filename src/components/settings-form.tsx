@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2, Save, Plus, Trash2, CheckCircle2 } from "lucide-react";
+import { Loader2, Save, Plus, Trash2, CheckCircle2, ImagePlus } from "lucide-react";
 
 interface TeamMember {
   name: string;
@@ -41,9 +41,30 @@ export function SettingsForm({ initial }: { initial: Record<string, string> }) {
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
+  const [uploadingLogo, setUploadingLogo] = useState(false);
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  async function uploadLogo(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingLogo(true);
+    setError("");
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await fetch("/api/upload", { method: "POST", body: fd });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "خطا");
+      setForm((f) => ({ ...f, logo_image_url: data.url }));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "خطا در بارگذاری");
+    } finally {
+      setUploadingLogo(false);
+      e.target.value = "";
+    }
+  }
 
   function updateMember(i: number, k: keyof TeamMember, v: string) {
     setTeam((t) => t.map((m, idx) => (idx === i ? { ...m, [k]: v } : m)));
@@ -94,11 +115,27 @@ export function SettingsForm({ initial }: { initial: Record<string, string> }) {
   return (
     <form onSubmit={handleSave} className="space-y-6">
       <Section title="لوگو و هویت">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div>
           <Field label="متن لوگو" value={form.logo_text} onChange={set("logo_text")} />
-          <Field label="آدرس تصویر لوگو (اختیاری)" value={form.logo_image_url} onChange={set("logo_image_url")} dir="ltr" />
         </div>
-        <p className="text-xs text-slate-400">در صورت وارد کردن آدرس تصویر، به جای آیکون پیش‌فرض از تصویر استفاده می‌شود.</p>
+        <div>
+          <label className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300">تصویر لوگو</label>
+          {form.logo_image_url ? (
+            <div className="flex items-center gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={form.logo_image_url} alt="لوگو" className="h-14 w-auto max-w-[10rem] rounded-lg border border-slate-200 object-contain p-1 dark:border-white/10" />
+              <button type="button" onClick={() => setForm((f) => ({ ...f, logo_image_url: "" }))} className="rounded-xl border border-rose-200 px-3 py-2 text-sm text-rose-500 hover:bg-rose-500/10 dark:border-rose-500/20">حذف تصویر</button>
+            </div>
+          ) : (
+            <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 p-4 text-sm text-slate-400 hover:border-indigo-400 hover:text-indigo-500 dark:border-white/15">
+              {uploadingLogo ? <Loader2 className="h-5 w-5 animate-spin" /> : <ImagePlus className="h-5 w-5" />}
+              {uploadingLogo ? "در حال بارگذاری..." : "بارگذاری تصویر لوگو"}
+              <input type="file" accept="image/*" onChange={uploadLogo} className="hidden" />
+            </label>
+          )}
+          <input dir="ltr" value={form.logo_image_url} onChange={set("logo_image_url")} placeholder="یا آدرس تصویر را وارد کنید" className={`${inputClass} mt-2`} />
+          <p className="mt-1 text-xs text-slate-400">در صورت وجود تصویر، به جای آیکون پیش‌فرض استفاده می‌شود.</p>
+        </div>
       </Section>
 
       <Section title="فوتر">

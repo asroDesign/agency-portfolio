@@ -5,18 +5,19 @@ import { Maximize2, X, ExternalLink } from "lucide-react";
 
 /**
  * Inline, zoomed-out, non-interactive live preview of a website using an iframe.
+ * On hover, the preview auto-scrolls down so the visitor can see the whole page.
  * Falls back gracefully when the target site blocks embedding.
  */
 export function LivePreviewFrame({ url, className = "" }: { url: string; className?: string }) {
   return (
-    <div className={`relative overflow-hidden bg-white ${className}`}>
+    <div className={`live-preview-hover group/preview relative overflow-hidden bg-white ${className}`}>
       <iframe
         src={url}
         title="پیش‌نمایش زنده"
         loading="lazy"
         sandbox="allow-scripts allow-same-origin"
-        className="pointer-events-none absolute left-0 top-0 h-[200%] w-[200%] origin-top-left scale-[0.5] border-0"
-        style={{ backgroundColor: "#fff" }}
+        className="live-preview-frame pointer-events-none absolute left-0 top-0 border-0"
+        style={{ backgroundColor: "#fff", width: "200%", height: "200%" }}
       />
       <div className="pointer-events-none absolute inset-0" />
     </div>
