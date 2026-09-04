@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Newspaper } from "lucide-react";
+import { ArrowLeft, MessageSquareQuote } from "lucide-react";
 import { getFeaturedPosts, getPublishedCourses } from "@/lib/catalog";
 import { BlogCard } from "@/components/blog/blog-card";
 import { CourseCard } from "@/components/courses/course-card";
@@ -19,5 +19,21 @@ export async function BlogSection({ title, subtitle, count = 3 }: { title?: stri
 }
 
 export function TestimonialFormSection({ title, subtitle }: { title?: string | null; subtitle?: string | null }) {
-  return <section className="section-shell bg-base-100"><Container><div className="mx-auto max-w-3xl rounded-3xl border border-base-content/10 bg-base-200/45 p-6 sm:p-10"><div className="flex items-center justify-center gap-2 text-primary"><Newspaper className="h-5 w-5" /><span className="text-sm font-bold">بازخورد شما</span></div><SectionHeading title={title ?? "تجربه خود را با ما به اشتراک بگذارید"} subtitle={subtitle} align="center" /><div className="mt-8"><TestimonialForm /></div></div></Container></section>;
+  return (
+    <section className="section-shell relative overflow-hidden bg-base-200/55" aria-labelledby="feedback-heading">
+      <Container>
+        <MessageSquareQuote aria-hidden="true" className="pointer-events-none absolute left-5 top-8 h-16 w-16 text-primary/5 sm:left-12 sm:h-20 sm:w-20" />
+        <div className="relative mx-auto max-w-3xl">
+          <header className="text-center">
+            <p className="text-sm font-bold text-primary">بازخورد شما</p>
+            <h2 id="feedback-heading" className="mt-5 text-2xl font-extrabold leading-relaxed text-base-content sm:text-3xl">
+              {title ?? "تجربه خود را با ما به اشتراک بگذارید"}
+            </h2>
+            {subtitle && <p className="mt-3 text-sm leading-7 text-base-content/60 sm:text-base">{subtitle}</p>}
+          </header>
+          <div className="mt-9 sm:mt-10"><TestimonialForm /></div>
+        </div>
+      </Container>
+    </section>
+  );
 }

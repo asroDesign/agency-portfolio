@@ -33,11 +33,11 @@ export function TestimonialForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20";
+    "w-full rounded-2xl border border-base-content/8 bg-white px-4 py-3 text-sm text-base-content shadow-none placeholder:text-base-content/35 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/15 motion-reduce:transition-none";
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center justify-center rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-10 text-center">
+      <div role="status" className="flex flex-col items-center justify-center rounded-3xl bg-white p-8 text-center sm:p-10">
         <CheckCircle2 className="h-12 w-12 text-emerald-500" />
         <h3 className="mt-4 text-lg font-bold">از نظر شما سپاسگزاریم!</h3>
         <p className="mt-2 text-sm text-slate-600">
@@ -48,42 +48,56 @@ export function TestimonialForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid gap-4 sm:grid-cols-2">
-        <input required value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))} placeholder="نام شما" className={inputClass} />
-        <input value={form.role} onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))} placeholder="سمت / شرکت (اختیاری)" className={inputClass} />
+    <form onSubmit={handleSubmit} className="space-y-5" aria-busy={status === "loading"}>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <label className="block space-y-2">
+          <span className="text-sm font-medium text-base-content/75">نام شما</span>
+          <input required autoComplete="name" value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))} placeholder="نام و نام خانوادگی" className={`input h-12 ${inputClass}`} />
+        </label>
+        <label className="block space-y-2">
+          <span className="text-sm font-medium text-base-content/75">سمت / شرکت <span className="font-normal text-base-content/40">(اختیاری)</span></span>
+          <input value={form.role} onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))} placeholder="سمت یا نام شرکت شما" className={`input h-12 ${inputClass}`} />
+        </label>
       </div>
+      <label className="block space-y-2">
+        <span className="text-sm font-medium text-base-content/75">تجربه شما</span>
       <textarea
         required
-        rows={3}
+        rows={4}
         value={form.content}
         onChange={(e) => setForm((f) => ({ ...f, content: e.target.value }))}
         placeholder="تجربه همکاری خود با ما را بنویسید..."
-        className={`${inputClass} resize-none`}
+        className={`textarea ${inputClass} min-h-36 resize-y leading-7`}
       />
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-1">
+      </label>
+      <div className="flex flex-col items-center gap-6 pt-2">
+        <fieldset className="text-center">
+          <legend className="mb-2 w-full text-sm text-base-content/60">به تجربه همکاری خود امتیاز دهید</legend>
+        <div className="flex justify-center" dir="ltr">
           {[1, 2, 3, 4, 5].map((r) => (
             <button
               key={r}
               type="button"
               onClick={() => setForm((f) => ({ ...f, rating: r }))}
               aria-label={`${r} ستاره`}
+              aria-pressed={form.rating === r}
+              className="flex h-11 w-11 items-center justify-center rounded-xl focus-visible:outline-2 focus-visible:outline-primary"
             >
               <Star className={`h-6 w-6 transition-colors ${r <= form.rating ? "fill-amber-400 text-amber-400" : "text-slate-300"}`} />
             </button>
           ))}
         </div>
+        </fieldset>
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 disabled:opacity-60"
+          className="btn btn-primary min-h-12 w-full gap-2 rounded-xl border-0 px-9 font-semibold shadow-none sm:w-auto"
         >
           {status === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
           ثبت نظر
         </button>
       </div>
-      {status === "error" && <p className="text-sm text-rose-500">{error}</p>}
+      {status === "error" && <p role="alert" className="text-center text-sm text-error">{error}</p>}
     </form>
   );
 }

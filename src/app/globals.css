@@ -153,10 +153,36 @@ body {
   background: currentColor;
 }
 
+.why-section {
+  background: radial-gradient(ellipse at 24% 60%, #edf8ff 0%, transparent 60%), var(--color-base-100);
+}
+
+.why-section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 65%;
+  height: 10rem;
+  bottom: -7rem;
+  right: -5%;
+  border-radius: 50%;
+  background: #e9f7fc;
+  transform: rotate(-6deg);
+}
+
+.why-benefit {
+  border-radius: 48% 48% 46% 46% / 24% 24% 22% 22%;
+}
+
 .soft-card {
   border: 0;
   background: var(--color-base-100);
   box-shadow: 0 24px 60px -38px color-mix(in oklab, var(--color-neutral) 38%, transparent);
+}
+
+.card.soft-card {
+  border: 1px solid color-mix(in oklab, var(--color-base-content) 8%, transparent);
+  box-shadow: none;
 }
 
 /* Custom scrollbar */
