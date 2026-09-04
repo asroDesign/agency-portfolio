@@ -9,7 +9,7 @@ export async function ServicesSection({ title, subtitle }: { title?: string | nu
   return (
     <section id="services" className="section-shell">
       <Container>
-        <div className="flex flex-col gap-6 md:flex-row md:justify-between md:items-center">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <SectionHeading
               eyebrow="چه کار می‌کنیم"

@@ -5,6 +5,92 @@ import { CATEGORY_LABELS, CATEGORY_COLORS } from "@/lib/constants";
 import { LivePreviewFrame, LivePreviewButton } from "@/components/live-preview";
 import { cn } from "@/lib/utils";
 
-export function PortfolioCard({ item }: { item: PortfolioItem }) {
-  return <article className="card soft-card group overflow-hidden rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10"><div className="relative aspect-[16/10] overflow-hidden">{item.liveUrl ? <LivePreviewFrame url={item.liveUrl} className="h-full w-full" /> : item.imageUrl ? <img src={item.imageUrl} alt={item.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" /> : <div className="flex h-full w-full items-center justify-center bg-primary/10 text-4xl">🖥️</div>}<div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />{item.liveUrl && <span className="badge badge-success absolute right-3 top-3 gap-1 border-0 text-white"><span className="h-1.5 w-1.5 rounded-full bg-white" />زنده</span>}<div className="absolute left-3 top-3 opacity-0 transition-opacity group-hover:opacity-100">{item.liveUrl && <LivePreviewButton url={item.liveUrl} />}</div><div className="absolute bottom-3 right-3 flex flex-wrap gap-2"><span className={cn("badge border backdrop-blur", CATEGORY_COLORS[item.category])}>{CATEGORY_LABELS[item.category] ?? item.category}</span>{item.liveUrl && <a href={item.liveUrl} target="_blank" rel="noreferrer" className="badge gap-1 border-0 bg-white/90 text-slate-800"><ExternalLink className="h-3.5 w-3.5" />بازدید</a>}{item.demoUrl && <a href={item.demoUrl} target="_blank" rel="noreferrer" className="badge gap-1 border-0 bg-primary text-primary-content"><PlayCircle className="h-3.5 w-3.5" />دموی زنده</a>}</div></div><div className="card-body gap-2 p-5"><div className="flex items-start justify-between gap-3"><h3 className="card-title text-lg">{item.title}</h3><Link href="/portfolio" aria-label="مشاهده نمونه‌کارها" className="text-primary opacity-0 transition-opacity group-hover:opacity-100"><ArrowUpLeft className="h-5 w-5" /></Link></div><p className="line-clamp-2 text-sm leading-7 text-base-content/65">{item.description}</p>{item.technologies && item.technologies.length > 0 && <div className="mt-2 flex flex-wrap gap-1.5">{item.technologies.slice(0, 4).map((technology) => <span key={technology} className="badge badge-ghost text-xs text-base-content/60">{technology}</span>)}</div>}</div></article>;
+export function PortfolioCard({ item, index = 0 }: { item: PortfolioItem; index?: number }) {
+  return (
+    <article
+      style={{ animationDelay: `${index * 90}ms` }}
+      className="card animate-card-in group transform-gpu overflow-hidden rounded-3xl border border-base-content/8 bg-white/80 transition-all duration-300 ease-out will-change-transform hover:-translate-y-1.5 hover:border-primary/30 motion-reduce:transform-none motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+    >
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100">
+          {item.liveUrl ? (
+            <LivePreviewFrame url={item.liveUrl} className="h-full w-full" />
+          ) : item.imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={item.imageUrl}
+              alt={item.title}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-primary/10 text-4xl">
+              🖥️
+            </div>
+          )}
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:transition-none" />
+        {item.liveUrl && (
+          <span className="badge badge-success absolute right-3 top-3 gap-1 border-0 text-white">
+            <span className="h-1.5 w-1.5 rounded-full bg-white" />
+            زنده
+          </span>
+        )}
+        <div className="absolute left-3 top-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:transition-none">
+          {item.liveUrl && <LivePreviewButton url={item.liveUrl} />}
+        </div>
+        <div className="absolute bottom-3 right-3 flex flex-wrap gap-2">
+          <span className={cn("badge border backdrop-blur", CATEGORY_COLORS[item.category])}>
+            {CATEGORY_LABELS[item.category] ?? item.category}
+          </span>
+          {item.liveUrl && (
+            <a
+              href={item.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="badge gap-1 border-0 bg-white/90 text-slate-800"
+            >
+              <ExternalLink className="h-3.5 w-3.5" />
+              بازدید
+            </a>
+          )}
+          {item.demoUrl && (
+            <a
+              href={item.demoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="badge gap-1 border-0 bg-primary text-primary-content"
+            >
+              <PlayCircle className="h-3.5 w-3.5" />
+              دموی زنده
+            </a>
+          )}
+        </div>
+      </div>
+      <div className="card-body gap-2 p-5">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="card-title text-lg transition-colors duration-300 group-hover:text-primary">
+            {item.title}
+          </h3>
+          <Link
+            href="/portfolio"
+            aria-label="مشاهده نمونه‌کارها"
+            className="text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:transition-none"
+          >
+            <ArrowUpLeft className="h-5 w-5" />
+          </Link>
+        </div>
+        <p className="line-clamp-2 text-sm leading-7 text-base-content/65">{item.description}</p>
+        {item.technologies && item.technologies.length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {item.technologies.slice(0, 4).map((technology) => (
+              <span key={technology} className="badge badge-ghost text-xs text-base-content/60">
+                {technology}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </article>
+  );
 }
