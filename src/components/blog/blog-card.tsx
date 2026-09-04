@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { ArrowLeft, Calendar, User } from "lucide-react";
+import type { BlogPost } from "@/db/schema";
+import { formatDate } from "@/lib/utils";
+
+export function BlogCard({ post }: { post: BlogPost }) {
+  return <article className="card soft-card group overflow-hidden rounded-3xl transition-all hover:-translate-y-1 hover:border-primary/30"><Link href={`/blog/${post.slug}`} className="relative block aspect-[16/9] overflow-hidden">{post.coverUrl ? <img src={post.coverUrl} alt={post.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" /> : <div className="flex h-full items-center justify-center bg-primary/10 text-4xl">📝</div>}</Link><div className="card-body p-5"><div className="flex items-center gap-3 text-xs text-base-content/50"><span className="badge badge-ghost font-medium text-primary">{post.category}</span><span className="inline-flex items-center gap-1"><Calendar className="h-3.5 w-3.5" />{formatDate(post.createdAt)}</span></div><Link href={`/blog/${post.slug}`}><h3 className="card-title mt-2 text-lg group-hover:text-primary">{post.title}</h3></Link><p className="line-clamp-2 text-sm leading-7 text-base-content/65">{post.excerpt}</p><div className="mt-2 flex items-center justify-between"><span className="inline-flex items-center gap-1 text-xs text-base-content/50"><User className="h-3.5 w-3.5" />{post.author}</span><span className="inline-flex items-center gap-1 text-sm font-semibold text-primary">ادامه مطلب<ArrowLeft className="h-4 w-4" /></span></div></div></article>;
+}

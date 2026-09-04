@@ -1,0 +1,9 @@
+import { Quote, Star } from "lucide-react";
+import { getApprovedTestimonials } from "@/lib/catalog";
+import { Container, SectionHeading } from "@/components/ui";
+
+export async function TestimonialsSection({ title, subtitle }: { title?: string | null; subtitle?: string | null }) {
+  const testimonials = await getApprovedTestimonials();
+  if (testimonials.length === 0) return null;
+  return <section className="section-shell bg-base-200/55"><Container><SectionHeading eyebrow="صدای مشتریان" title={title ?? "اعتماد، بهترین دستاورد ماست"} subtitle={subtitle ?? "آنچه مشتریان درباره تجربه همکاری با نکسا تک می‌گویند."} align="center" /><div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{testimonials.slice(0, 6).map((testimonial) => <article key={testimonial.id} className="soft-card flex flex-col rounded-3xl p-6"><div className="flex items-center justify-between"><Quote className="h-8 w-8 text-primary/45" /><div className="flex gap-0.5">{Array.from({ length: 5 }).map((_, index) => <Star key={index} className={`h-4 w-4 ${index < testimonial.rating ? "fill-warning text-warning" : "text-base-300"}`} />)}</div></div><p className="mt-6 flex-1 text-sm leading-8 text-base-content/70">{testimonial.content}</p><div className="mt-6 flex items-center gap-3 border-t border-base-content/10 pt-5">{testimonial.avatarUrl ? <img src={testimonial.avatarUrl} alt={testimonial.name} className="h-11 w-11 rounded-full object-cover" /> : <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-content">{testimonial.name.charAt(0)}</div>}<div><p className="text-sm font-bold">{testimonial.name}</p>{testimonial.role && <p className="mt-0.5 text-xs text-base-content/50">{testimonial.role}</p>}</div></div></article>)}</div></Container></section>;
+}

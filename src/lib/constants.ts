@@ -7,11 +7,11 @@ export const CATEGORY_LABELS: Record<string, string> = {
 };
 
 export const CATEGORY_COLORS: Record<string, string> = {
-  web: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border-indigo-500/20",
-  app: "bg-violet-500/10 text-violet-600 dark:text-violet-300 border-violet-500/20",
+  web: "bg-primary/10 text-primary border-primary/20",
+  app: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/20",
   seo: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-500/20",
   ecommerce: "bg-amber-500/10 text-amber-600 dark:text-amber-300 border-amber-500/20",
-  branding: "bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-300 border-fuchsia-500/20",
+  branding: "bg-teal-500/10 text-teal-700 dark:text-teal-300 border-teal-500/20",
 };
 
 export const ORDER_STATUS_LABELS: Record<string, string> = {
