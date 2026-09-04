@@ -22,12 +22,12 @@ export default async function TemplatesPage() {
   ]);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0d1a] dark:text-white">
+    <div className="page-shell">
       <SiteHeader />
-      <main className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="text-center">
+      <main className="page-main">
+        <div className="page-intro">
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">فروشگاه قالب</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
             قالب‌های آماده و حرفه‌ای برای وب‌سایت شما — خرید آسان، نصب سریع و پشتیبانی کامل.
           </p>
         </div>

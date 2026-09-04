@@ -74,22 +74,22 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0d1a] dark:text-white">
+    <div className="page-shell">
       <SiteHeader />
 
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+      <main className="site-container py-10 lg:py-14">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1 text-sm text-slate-400">
-          <Link href="/" className="inline-flex items-center gap-1 hover:text-indigo-500">
+          <Link href="/" className="inline-flex items-center gap-1 hover:text-primary">
             <Home className="h-3.5 w-3.5" />
             خانه
           </Link>
           <ChevronLeft className="h-4 w-4" />
-          <Link href="/templates" className="hover:text-indigo-500">
+          <Link href="/templates" className="hover:text-primary">
             فروشگاه قالب
           </Link>
           <ChevronLeft className="h-4 w-4" />
-          <span className="text-slate-600 dark:text-slate-300">{template.title}</span>
+          <span className="text-slate-600">{template.title}</span>
         </nav>
 
         <div className="mt-6 grid gap-8 lg:grid-cols-3">
@@ -98,7 +98,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
             <div className="flex flex-wrap items-center gap-3">
               <h1 className="text-2xl font-extrabold sm:text-3xl">{template.title}</h1>
               {template.version && (
-                <span className="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-300">
+                <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
                   نسخه {template.version}
                 </span>
               )}
@@ -109,10 +109,10 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
             </div>
 
             {/* Info table */}
-            <div className="mt-6 grid gap-px overflow-hidden rounded-3xl border border-slate-200 bg-slate-200 dark:border-white/10 dark:bg-white/10 sm:grid-cols-2">
+            <div className="mt-6 grid gap-px overflow-hidden rounded-3xl border border-slate-200 bg-slate-200 sm:grid-cols-2">
               {infoRows.map((row) => (
-                <div key={row.label} className="flex items-center gap-3 bg-white p-4 dark:bg-[#0b0d1a]">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-500">
+                <div key={row.label} className="flex items-center gap-3 bg-white p-4">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <row.icon className="h-5 w-5" />
                   </span>
                   <div>
@@ -124,7 +124,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
             </div>
 
             {/* Unified tabs */}
-            <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+            <div className="mt-6 soft-card rounded-3xl p-6">
               <TemplateAllTabs
                 templateId={template.id}
                 description={template.description}
@@ -143,11 +143,11 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
           {/* Sidebar */}
           <aside>
             <div className="sticky top-24 space-y-4">
-              <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+              <div className="soft-card rounded-3xl p-6">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-slate-400">قیمت</span>
                   {template.price > 0 ? (
-                    <span className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">
+                    <span className="text-2xl font-extrabold text-emerald-600">
                       {formatNumber(template.price)}
                       <span className="mr-1 text-xs font-normal text-slate-400">تومان</span>
                     </span>
@@ -156,7 +156,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
                   )}
                 </div>
 
-                <div className="mt-4 grid grid-cols-3 gap-2 border-y border-slate-100 py-4 text-center dark:border-white/5">
+                <div className="mt-4 grid grid-cols-3 gap-2 border-y border-slate-100 py-4 text-center">
                   <div>
                     <p className="flex items-center justify-center gap-1 text-sm font-bold"><ShoppingBag className="h-3.5 w-3.5" />{formatNumber(template.sales)}</p>
                     <p className="text-[11px] text-slate-400">فروش</p>
@@ -175,21 +175,21 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
                   <PurchaseBox templateId={template.id} price={template.price} owned={owned} addons={addons} />
                   <div className="grid grid-cols-2 gap-2">
                     {template.liveUrl && (
-                      <a href={template.liveUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:border-indigo-300 hover:text-indigo-600 dark:border-white/10 dark:text-slate-300">
+                      <a href={template.liveUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:border-primary/40 hover:text-primary">
                         <Eye className="h-4 w-4" /> پیش‌نمایش
                       </a>
                     )}
                     {template.demoUrl && (
-                      <a href={template.demoUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:border-indigo-300 hover:text-indigo-600 dark:border-white/10 dark:text-slate-300">
+                      <a href={template.demoUrl} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:border-primary/40 hover:text-primary">
                         <PlayCircle className="h-4 w-4" /> دموی زنده
                       </a>
                     )}
                   </div>
                 </div>
 
-                <div className="mt-5 rounded-2xl bg-slate-50 p-4 dark:bg-white/5">
+                <div className="mt-5 rounded-2xl bg-slate-50 p-4">
                   <h4 className="flex items-center gap-2 text-sm font-bold"><ShieldCheck className="h-4 w-4 text-emerald-500" /> قوانین استفاده</h4>
-                  <ul className="mt-3 space-y-2 text-xs text-slate-500 dark:text-slate-400">
+                  <ul className="mt-3 space-y-2 text-xs text-slate-500">
                     <li className="flex items-start gap-2"><Check className="mt-0.5 h-3.5 w-3.5 text-emerald-500" /> دانلود فایل بلافاصله بعد از خرید</li>
                     <li className="flex items-start gap-2"><Check className="mt-0.5 h-3.5 w-3.5 text-emerald-500" /> پشتیبانی رایگان ۶ ماهه</li>
                     <li className="flex items-start gap-2"><Check className="mt-0.5 h-3.5 w-3.5 text-emerald-500" /> به‌روزرسانی رایگان</li>

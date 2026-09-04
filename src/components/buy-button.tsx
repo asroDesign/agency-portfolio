@@ -62,7 +62,7 @@ export function BuyButton({
             href={downloadUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-300 px-6 py-3 text-sm font-semibold text-emerald-600 transition-colors hover:bg-emerald-500/10 dark:border-emerald-500/30 dark:text-emerald-300"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-300 px-6 py-3 text-sm font-semibold text-emerald-600 transition-colors hover:bg-emerald-500/10"
           >
             <Download className="h-4 w-4" />
             دانلود قالب
@@ -78,7 +78,7 @@ export function BuyButton({
         type="button"
         onClick={handleBuy}
         disabled={loading}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 py-3.5 text-base font-bold text-white shadow-xl shadow-indigo-500/25 transition-all hover:scale-[1.02] disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/25 transition-all hover:scale-[1.02] disabled:opacity-60"
       >
         {loading ? (
           <>

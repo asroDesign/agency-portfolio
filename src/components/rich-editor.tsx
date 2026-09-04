@@ -11,7 +11,7 @@ const CKEditor = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex h-[360px] items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-400 dark:border-white/10 dark:bg-white/5">
+      <div className="flex h-[360px] items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-sm text-slate-400">
         در حال بارگذاری ویرایشگر...
       </div>
     ),

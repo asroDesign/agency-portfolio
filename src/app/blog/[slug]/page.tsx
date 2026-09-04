@@ -43,17 +43,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const related = all.filter((p) => p.id !== post.id).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0d1a] dark:text-white">
+    <div className="page-shell">
       <SiteHeader />
-      <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+      <main className="site-container py-12 lg:py-16">
+        <div className="mx-auto max-w-4xl">
         <article>
           <div className="text-center">
-            <Link href="/blog" className="inline-flex items-center gap-1 text-sm font-medium text-indigo-500 hover:underline">
+            <Link href="/blog" className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
               <ArrowRight className="h-4 w-4" />
               بازگشت به وبلاگ
             </Link>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">
-              <span className="rounded-full bg-indigo-500/10 px-3 py-1 font-medium text-indigo-600 dark:text-indigo-300">
+              <span className="rounded-full bg-primary/10 px-3 py-1 font-medium text-primary">
                 {post.category}
               </span>
               <span className="inline-flex items-center gap-1">
@@ -77,14 +78,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             />
           )}
 
-          <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 dark:border-white/10 dark:bg-white/5">
+          <div className="mt-8 soft-card rounded-3xl p-6 sm:p-8">
             <HtmlContent html={post.content} />
           </div>
 
           {post.tags && post.tags.length > 0 && (
             <div className="mt-6 flex flex-wrap gap-2">
               {post.tags.map((t) => (
-                <span key={t} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 dark:bg-white/5 dark:text-slate-300">
+                <span key={t} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
                   #{t}
                 </span>
               ))}
@@ -102,6 +103,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           </section>
         )}
+        </div>
       </main>
       <SiteFooter />
     </div>

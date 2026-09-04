@@ -22,7 +22,7 @@ export default async function EditCoursePage({ params }: { params: Promise<{ id:
   return (
     <div>
       <h1 className="text-2xl font-extrabold sm:text-3xl">ویرایش دوره</h1>
-      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">در حال ویرایش «{course.title}»</p>
+      <p className="mt-1 text-sm text-slate-500">در حال ویرایش «{course.title}»</p>
       <div className="mt-6">
         <CourseForm initial={course} sessions={sessions} />
       </div>

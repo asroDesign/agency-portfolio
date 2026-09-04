@@ -23,8 +23,8 @@ export function PortfolioGrid({ items }: { items: PortfolioItem[] }) {
             className={cn(
               "rounded-full border px-4 py-2 text-sm font-medium transition-all",
               active === c
-                ? "border-transparent bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white shadow-lg shadow-indigo-500/25"
-                : "border-slate-200 bg-white text-slate-600 hover:border-indigo-300 hover:text-indigo-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300",
+                ? "border-transparent bg-primary text-white shadow-lg shadow-primary/25"
+                : "border-slate-200 bg-white text-slate-600 hover:border-primary/40 hover:text-primary",
             )}
           >
             {c === "all" ? "همه" : CATEGORY_LABELS[c] ?? c}
@@ -33,9 +33,9 @@ export function PortfolioGrid({ items }: { items: PortfolioItem[] }) {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="mt-16 rounded-3xl border border-dashed border-slate-300 py-20 text-center dark:border-white/15">
+        <div className="mt-16 rounded-3xl border border-dashed border-slate-300 py-20 text-center">
           <p className="text-5xl">🔍</p>
-          <p className="mt-4 font-semibold text-slate-600 dark:text-slate-300">نمونه‌کاری در این دسته پیدا نشد</p>
+          <p className="mt-4 font-semibold text-slate-600">نمونه‌کاری در این دسته پیدا نشد</p>
         </div>
       ) : (
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

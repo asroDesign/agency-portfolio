@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useSiteConfig } from "@/components/site-config";
 
-export function Logo({ className = "" }: { className?: string }) {
+export function Logo({ className = "", inverted = false }: { className?: string; inverted?: boolean }) {
   const { logoText, logoImageUrl } = useSiteConfig();
 
   return (
@@ -24,7 +24,7 @@ export function Logo({ className = "" }: { className?: string }) {
         </span>
       )}
       <span className="text-xl font-extrabold tracking-tight">
-        <span className="text-slate-900 dark:text-white">{logoText}</span>
+        <span className={inverted ? "text-white" : "text-neutral"}>{logoText}</span>
       </span>
     </Link>
   );

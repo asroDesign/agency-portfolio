@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Vazirmatn } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import { SiteConfigProvider } from "@/components/site-config";
 import { getSiteConfig } from "@/lib/data";
 import "./globals.css";
@@ -50,7 +49,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const config = await getSiteConfig();
 
   return (
-    <html lang="fa" dir="rtl" suppressHydrationWarning>
+    <html lang="fa" dir="rtl" data-theme="nexatech">
       <body className={`${vazirmatn.variable} font-sans antialiased`}>
         <script
           type="application/ld+json"
@@ -66,13 +65,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             }),
           }}
         />
-        <ThemeProvider>
-          <SiteConfigProvider
-            value={{ logoText: config.logoText, logoImageUrl: config.logoImageUrl }}
-          >
-            {children}
-          </SiteConfigProvider>
-        </ThemeProvider>
+        <SiteConfigProvider
+          value={{ logoText: config.logoText, logoImageUrl: config.logoImageUrl }}
+        >
+          {children}
+        </SiteConfigProvider>
       </body>
     </html>
   );

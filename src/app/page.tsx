@@ -73,7 +73,7 @@ export default async function HomePage() {
   if (sections.length > 0 && !insertedWhy) renderedSections.push(<WhyChooseUsSection key="why-choose-us" />);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0d1a] dark:text-white">
+    <div className="min-h-screen bg-base-100 text-base-content">
       <SiteHeader />
       {renderedSections}
       <SiteFooter />

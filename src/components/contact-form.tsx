@@ -36,20 +36,20 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-colors focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500";
+    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20";
 
   if (status === "success") {
     return (
       <div className="flex h-full flex-col items-center justify-center rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-10 text-center">
         <CheckCircle2 className="h-14 w-14 text-emerald-500" />
         <h3 className="mt-4 text-xl font-bold">پیام شما ارسال شد!</h3>
-        <p className="mt-2 text-slate-600 dark:text-slate-400">
+        <p className="mt-2 text-slate-600">
           ممنون از پیام‌تان. در اسرع وقت با شما تماس می‌گیریم.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 rounded-full border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-600 transition-colors hover:border-indigo-300 hover:text-indigo-600 dark:border-white/15 dark:text-slate-300"
+          className="mt-6 rounded-full border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-600 transition-colors hover:border-primary/40 hover:text-primary"
         >
           ارسال پیام جدید
         </button>
@@ -61,7 +61,7 @@ export function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300">
+          <label className="mb-1.5 block text-sm font-medium text-slate-700">
             نام و نام خانوادگی
           </label>
           <input
@@ -73,7 +73,7 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300">
+          <label className="mb-1.5 block text-sm font-medium text-slate-700">
             ایمیل
           </label>
           <input
@@ -88,7 +88,7 @@ export function ContactForm() {
         </div>
       </div>
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300">
+        <label className="mb-1.5 block text-sm font-medium text-slate-700">
           موضوع
         </label>
         <input
@@ -100,7 +100,7 @@ export function ContactForm() {
         />
       </div>
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300">
+        <label className="mb-1.5 block text-sm font-medium text-slate-700">
           پیام
         </label>
         <textarea
@@ -114,7 +114,7 @@ export function ContactForm() {
       </div>
 
       {status === "error" && (
-        <p className="rounded-xl bg-rose-500/10 px-4 py-3 text-sm text-rose-600 dark:text-rose-300">
+        <p className="rounded-xl bg-rose-500/10 px-4 py-3 text-sm text-rose-600">
           {error}
         </p>
       )}
@@ -122,7 +122,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all hover:scale-[1.02] disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:scale-[1.02] disabled:opacity-60"
       >
         {status === "loading" ? (
           <>

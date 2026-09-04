@@ -21,7 +21,7 @@ export default async function DashboardPage() {
       sub: `${stats.newOrders} سفارش جدید`,
       icon: ShoppingCart,
       href: "/admin/orders",
-      gradient: "from-indigo-500 to-blue-500",
+      gradient: "from-primary to-info",
     },
     {
       label: "پیام‌های دریافتی",
@@ -29,7 +29,7 @@ export default async function DashboardPage() {
       sub: `${stats.unread} پیام خوانده‌نشده`,
       icon: MessagesSquare,
       href: "/admin/messages",
-      gradient: "from-violet-500 to-purple-500",
+      gradient: "from-secondary to-primary",
     },
     {
       label: "نمونه‌کارها",
@@ -37,7 +37,7 @@ export default async function DashboardPage() {
       sub: "پروژه منتشرشده",
       icon: FolderKanban,
       href: "/admin/portfolio",
-      gradient: "from-fuchsia-500 to-pink-500",
+      gradient: "from-accent to-primary",
     },
     {
       label: "پیام‌های جدید",
@@ -54,13 +54,13 @@ export default async function DashboardPage() {
       <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
         <div>
           <h1 className="text-2xl font-extrabold sm:text-3xl">داشبورد</h1>
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+          <p className="mt-1 text-sm text-slate-500">
             نمای کلی از وضعیت کسب‌وکار شما
           </p>
         </div>
         <Link
           href="/admin/portfolio"
-          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-transform hover:scale-105"
+          className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-transform hover:scale-105"
         >
           <Plus className="h-4 w-4" />
           نمونه‌کار جدید
@@ -72,7 +72,7 @@ export default async function DashboardPage() {
           <Link
             key={c.label}
             href={c.href}
-            className="group rounded-3xl border border-slate-200 bg-white p-5 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 dark:border-white/10 dark:bg-white/5"
+            className="group soft-card rounded-3xl p-5 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
           >
             <div className="flex items-center justify-between">
               <span
@@ -80,20 +80,20 @@ export default async function DashboardPage() {
               >
                 <c.icon className="h-6 w-6" />
               </span>
-              <ArrowLeft className="h-4 w-4 text-slate-300 transition-transform group-hover:-translate-x-1 dark:text-slate-600" />
+              <ArrowLeft className="h-4 w-4 text-slate-300 transition-transform group-hover:-translate-x-1" />
             </div>
             <div className="mt-4 text-3xl font-extrabold">{c.value}</div>
-            <div className="mt-1 text-sm font-medium text-slate-700 dark:text-slate-300">{c.label}</div>
+            <div className="mt-1 text-sm font-medium text-slate-700">{c.label}</div>
             <div className="mt-0.5 text-xs text-slate-400">{c.sub}</div>
           </Link>
         ))}
       </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="soft-card rounded-3xl p-5">
           <div className="flex items-center justify-between">
             <h2 className="font-bold">آخرین سفارش‌ها</h2>
-            <Link href="/admin/orders" className="text-sm font-medium text-indigo-500 hover:underline">
+            <Link href="/admin/orders" className="text-sm font-medium text-primary hover:underline">
               مشاهده همه
             </Link>
           </div>
@@ -104,7 +104,7 @@ export default async function DashboardPage() {
               recentOrders.map((o) => (
                 <div
                   key={o.id}
-                  className="flex items-center justify-between gap-3 rounded-2xl border border-slate-100 p-3 dark:border-white/5"
+                  className="flex items-center justify-between gap-3 rounded-2xl border border-slate-100 p-3"
                 >
                   <div className="min-w-0">
                     <p className="truncate font-medium">{o.name}</p>
@@ -122,10 +122,10 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="soft-card rounded-3xl p-5">
           <div className="flex items-center justify-between">
             <h2 className="font-bold">آخرین پیام‌ها</h2>
-            <Link href="/admin/messages" className="text-sm font-medium text-indigo-500 hover:underline">
+            <Link href="/admin/messages" className="text-sm font-medium text-primary hover:underline">
               مشاهده همه
             </Link>
           </div>
@@ -136,12 +136,12 @@ export default async function DashboardPage() {
               recentMessages.map((m) => (
                 <div
                   key={m.id}
-                  className="flex items-center justify-between gap-3 rounded-2xl border border-slate-100 p-3 dark:border-white/5"
+                  className="flex items-center justify-between gap-3 rounded-2xl border border-slate-100 p-3"
                 >
                   <div className="min-w-0">
                     <p className="truncate font-medium">
                       {m.name}
-                      {!m.read && <span className="mr-2 inline-block h-2 w-2 rounded-full bg-indigo-500" />}
+                      {!m.read && <span className="mr-2 inline-block h-2 w-2 rounded-full bg-primary" />}
                     </p>
                     <p className="truncate text-xs text-slate-400">{m.subject}</p>
                   </div>

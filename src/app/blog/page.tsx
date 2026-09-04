@@ -19,20 +19,20 @@ export default async function BlogPage() {
   const posts = await getPublishedPosts();
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0d1a] dark:text-white">
+    <div className="page-shell">
       <SiteHeader />
-      <main className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="text-center">
+      <main className="page-main">
+        <div className="page-intro">
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">وبلاگ نکسا تک</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-400">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
             مقالات، نکات و آموزش‌های کاربردی در دنیای طراحی و توسعه وب.
           </p>
         </div>
 
         {posts.length === 0 ? (
-          <div className="mt-16 rounded-3xl border border-dashed border-slate-300 py-20 text-center dark:border-white/15">
+          <div className="mt-16 rounded-3xl border border-dashed border-slate-300 py-20 text-center">
             <p className="text-5xl">📝</p>
-            <p className="mt-4 font-semibold text-slate-600 dark:text-slate-300">هنوز مقاله‌ای منتشر نشده است</p>
+            <p className="mt-4 font-semibold text-slate-600">هنوز مقاله‌ای منتشر نشده است</p>
           </div>
         ) : (
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -147,14 +147,14 @@ export default function BuilderPage() {
   const availableTypes = SECTION_ORDER.filter((t) => !usedTypes.has(t));
 
   const inputClass =
-    "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition-colors focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 dark:border-white/10 dark:bg-white/5 dark:text-white";
+    "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20";
 
   return (
     <div>
       <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
         <div>
           <h1 className="text-2xl font-extrabold sm:text-3xl">صفحه‌ساز</h1>
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+          <p className="mt-1 text-sm text-slate-500">
             بخش‌های صفحه اصلی را با کشیدن و رها کردن مرتب کنید، ویرایش یا حذف نمایید.
           </p>
         </div>
@@ -163,7 +163,7 @@ export default function BuilderPage() {
             href="/"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 dark:border-white/10 dark:text-slate-300"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600"
           >
             <ExternalLink className="h-4 w-4" /> مشاهده صفحه
           </a>
@@ -171,7 +171,7 @@ export default function BuilderPage() {
             type="button"
             onClick={saveAll}
             disabled={saving}
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 disabled:opacity-60"
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 disabled:opacity-60"
           >
             {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : saved ? <CheckCircle2 className="h-4 w-4" /> : <Save className="h-4 w-4" />}
             {saved ? "ذخیره شد" : "ذخیره"}
@@ -179,11 +179,11 @@ export default function BuilderPage() {
         </div>
       </div>
 
-      {error && <p className="mt-4 rounded-xl bg-rose-500/10 px-4 py-3 text-sm text-rose-600 dark:text-rose-300">{error}</p>}
+      {error && <p className="mt-4 rounded-xl bg-rose-500/10 px-4 py-3 text-sm text-rose-600">{error}</p>}
 
       {/* Palette */}
-      <div className="mt-6 rounded-3xl border border-dashed border-slate-300 p-4 dark:border-white/15">
-        <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400">افزودن بخش جدید</h3>
+      <div className="mt-6 rounded-3xl border border-dashed border-slate-300 p-4">
+        <h3 className="text-sm font-bold text-slate-500">افزودن بخش جدید</h3>
         {availableTypes.length === 0 ? (
           <p className="mt-2 text-sm text-slate-400">همه بخش‌ها اضافه شده‌اند.</p>
         ) : (
@@ -193,7 +193,7 @@ export default function BuilderPage() {
                 key={type}
                 type="button"
                 onClick={() => addSection(type)}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600 transition-colors hover:bg-indigo-100 dark:border-indigo-500/30 dark:bg-indigo-500/10 dark:text-indigo-300"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-primary/25 bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/15"
               >
                 <Plus className="h-4 w-4" />
                 {SECTION_META[type].label}
@@ -205,9 +205,9 @@ export default function BuilderPage() {
 
       {/* Sections list */}
       {loading ? (
-        <div className="mt-16 flex flex-col items-center text-slate-400"><Loader2 className="h-8 w-8 animate-spin text-indigo-500" /></div>
+        <div className="mt-16 flex flex-col items-center text-slate-400"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>
       ) : sections.length === 0 ? (
-        <div className="mt-16 rounded-3xl border border-dashed border-slate-300 py-20 text-center dark:border-white/15">
+        <div className="mt-16 rounded-3xl border border-dashed border-slate-300 py-20 text-center">
           <p className="text-5xl">🧱</p>
           <p className="mt-4 font-semibold">هیچ بخشی وجود ندارد. از بالا یک بخش اضافه کنید.</p>
         </div>
@@ -221,26 +221,26 @@ export default function BuilderPage() {
               onDragOver={(e) => onDragOver(e, index)}
               onDragEnd={onDragEnd}
               className={cn(
-                "flex cursor-grab items-center gap-3 rounded-2xl border bg-white p-3 transition-all active:cursor-grabbing dark:bg-white/5",
-                dragIndex === index ? "border-indigo-400 ring-2 ring-indigo-500/20" : "border-slate-200 dark:border-white/10",
+                "flex cursor-grab items-center gap-3 rounded-2xl border bg-white p-3 transition-all active:cursor-grabbing",
+                dragIndex === index ? "border-primary ring-2 ring-primary/20" : "border-slate-200",
                 !s.enabled && "opacity-50",
               )}
             >
-              <span className="shrink-0 cursor-grab text-slate-300 dark:text-slate-600"><GripVertical className="h-5 w-5" /></span>
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500 text-xs font-bold text-white">
+              <span className="shrink-0 cursor-grab text-slate-300"><GripVertical className="h-5 w-5" /></span>
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-xs font-bold text-white">
                 {index + 1}
               </span>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-bold">{SECTION_META[s.type as SectionType]?.label ?? s.type}</p>
                 <p className="truncate text-xs text-slate-400">{s.title || "بدون عنوان"}</p>
               </div>
-              <button type="button" onClick={() => toggleSection(s.id)} title={s.enabled ? "مخفی کردن" : "نمایش"} className="shrink-0 rounded-xl border border-slate-200 p-2 text-slate-500 hover:border-indigo-300 hover:text-indigo-600 dark:border-white/10 dark:text-slate-300">
+              <button type="button" onClick={() => toggleSection(s.id)} title={s.enabled ? "مخفی کردن" : "نمایش"} className="shrink-0 rounded-xl border border-slate-200 p-2 text-slate-500 hover:border-primary/40 hover:text-primary">
                 {s.enabled ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
               </button>
-              <button type="button" onClick={() => openEdit(s)} title="ویرایش" className="shrink-0 rounded-xl border border-slate-200 p-2 text-slate-500 hover:border-indigo-300 hover:text-indigo-600 dark:border-white/10 dark:text-slate-300">
+              <button type="button" onClick={() => openEdit(s)} title="ویرایش" className="shrink-0 rounded-xl border border-slate-200 p-2 text-slate-500 hover:border-primary/40 hover:text-primary">
                 <Pencil className="h-4 w-4" />
               </button>
-              <button type="button" onClick={() => removeSection(s.id)} title="حذف" className="shrink-0 rounded-xl border border-rose-200 p-2 text-rose-500 hover:bg-rose-500/10 dark:border-rose-500/20">
+              <button type="button" onClick={() => removeSection(s.id)} title="حذف" className="shrink-0 rounded-xl border border-rose-200 p-2 text-rose-500 hover:bg-rose-500/10">
                 <Trash2 className="h-4 w-4" />
               </button>
             </div>
@@ -253,10 +253,10 @@ export default function BuilderPage() {
       {editing && (
         <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 sm:items-center">
           <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-sm" onClick={() => setEditing(null)} />
-          <div className="relative my-8 w-full max-w-lg rounded-3xl border border-slate-200 bg-white p-6 shadow-2xl dark:border-white/10 dark:bg-[#0b0d1a]">
+          <div className="relative my-8 w-full max-w-lg soft-card rounded-3xl p-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-bold">ویرایش بخش</h2>
-              <button type="button" onClick={() => setEditing(null)} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"><X className="h-5 w-5" /></button>
+              <button type="button" onClick={() => setEditing(null)} className="text-slate-400 hover:text-slate-600"><X className="h-5 w-5" /></button>
             </div>
             <form onSubmit={saveEdit} className="mt-5 space-y-4">
               <div>
@@ -274,10 +274,10 @@ export default function BuilderPage() {
                 </div>
               )}
               <div className="flex gap-3 pt-2">
-                <button type="submit" disabled={saving} className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-white disabled:opacity-60">
+                <button type="submit" disabled={saving} className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white disabled:opacity-60">
                   {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : null} ذخیره
                 </button>
-                <button type="button" onClick={() => setEditing(null)} className="rounded-xl border border-slate-200 px-5 py-3 text-sm text-slate-600 dark:border-white/10 dark:text-slate-300">انصراف</button>
+                <button type="button" onClick={() => setEditing(null)} className="rounded-xl border border-slate-200 px-5 py-3 text-sm text-slate-600">انصراف</button>
               </div>
             </form>
           </div>

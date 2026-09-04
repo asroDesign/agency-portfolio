@@ -45,16 +45,16 @@ export default async function PaymentsPage() {
     cn(
       "rounded-full border px-2.5 py-0.5 text-[11px] font-medium",
       status === "paid" || status === "free"
-        ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
-        : "border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-300",
+        ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-600"
+        : "border-amber-500/20 bg-amber-500/10 text-amber-600",
     );
 
   const statusLabel = (status: string) =>
     status === "paid" ? "پرداخت شده" : status === "free" ? "رایگان" : "در انتظار";
 
   const Row = ({ icon: Icon, title, user, amount, status, refId, date }: { icon: typeof GraduationCap; title: string; user: string; amount: number; status: string; refId: string | null; date: Date | string }) => (
-    <div className="flex items-center gap-3 rounded-2xl border border-slate-100 p-3 dark:border-white/5">
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-500"><Icon className="h-5 w-5" /></span>
+    <div className="flex items-center gap-3 rounded-2xl border border-slate-100 p-3">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"><Icon className="h-5 w-5" /></span>
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium">{title}</p>
         <p className="truncate text-xs text-slate-400">{user}</p>
@@ -71,10 +71,10 @@ export default async function PaymentsPage() {
   return (
     <div>
       <h1 className="text-2xl font-extrabold sm:text-3xl">پرداخت‌ها</h1>
-      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">ثبت‌نام دوره‌ها و خرید قالب‌ها</p>
+      <p className="mt-1 text-sm text-slate-500">ثبت‌نام دوره‌ها و خرید قالب‌ها</p>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="soft-card rounded-3xl p-5">
           <h2 className="font-bold">ثبت‌نام دوره‌ها</h2>
           <div className="mt-4 space-y-2">
             {enrollmentList.length === 0 ? (
@@ -87,7 +87,7 @@ export default async function PaymentsPage() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
+        <div className="soft-card rounded-3xl p-5">
           <h2 className="font-bold">خرید قالب‌ها</h2>
           <div className="mt-4 space-y-2">
             {templateList.length === 0 ? (

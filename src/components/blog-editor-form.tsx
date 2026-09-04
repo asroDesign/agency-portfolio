@@ -121,7 +121,7 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition-colors focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 dark:border-white/10 dark:bg-white/5 dark:text-white";
+    "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -129,7 +129,7 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
       <div className="flex items-center justify-between">
         <Link
           href="/admin/blog"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-indigo-500 dark:text-slate-400"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-primary"
         >
           <ArrowRight className="h-4 w-4" />
           بازگشت به مقالات
@@ -137,7 +137,7 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
         <button
           type="submit"
           disabled={saving || uploading}
-          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 disabled:opacity-60"
         >
           {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
           {isEdit ? "ذخیره تغییرات" : "انتشار مقاله"}
@@ -145,13 +145,13 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
       </div>
 
       {error && (
-        <p className="rounded-xl bg-rose-500/10 px-4 py-3 text-sm text-rose-600 dark:text-rose-300">{error}</p>
+        <p className="rounded-xl bg-rose-500/10 px-4 py-3 text-sm text-rose-600">{error}</p>
       )}
 
       {/* Main content */}
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="space-y-6 lg:col-span-2">
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+          <div className="soft-card rounded-3xl p-6">
             <label className="mb-1.5 block text-sm font-medium">عنوان مقاله <span className="text-rose-500">*</span></label>
             <input
               required
@@ -179,11 +179,11 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Cover image */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+          <div className="soft-card rounded-3xl p-6">
             <h3 className="text-sm font-bold">تصویر کاور</h3>
             <div className="mt-3">
               {form.coverUrl ? (
-                <div className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
+                <div className="relative overflow-hidden rounded-xl border border-slate-200">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={form.coverUrl} alt="کاور" className="aspect-[16/9] w-full object-cover" />
                   <button
@@ -195,7 +195,7 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
                   </button>
                 </div>
               ) : (
-                <label className="flex aspect-[16/9] cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 text-slate-400 transition-colors hover:border-indigo-400 hover:text-indigo-500 dark:border-white/15">
+                <label className="flex aspect-[16/9] cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 text-slate-400 transition-colors hover:border-primary hover:text-primary">
                   {uploading ? (
                     <>
                       <Loader2 className="h-8 w-8 animate-spin" />
@@ -216,41 +216,41 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
           </div>
 
           {/* Publish settings */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+          <div className="soft-card rounded-3xl p-6">
             <h3 className="text-sm font-bold">تنظیمات انتشار</h3>
             <div className="mt-4 space-y-4">
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">دسته‌بندی</label>
+                <label className="mb-1.5 block text-sm font-medium text-slate-600">دسته‌بندی</label>
                 <input value={form.category} onChange={set("category")} className={inputClass} />
               </div>
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">نویسنده</label>
+                <label className="mb-1.5 block text-sm font-medium text-slate-600">نویسنده</label>
                 <input value={form.author} onChange={set("author")} className={inputClass} />
               </div>
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">برچسب‌ها (با کاما جدا کنید)</label>
+                <label className="mb-1.5 block text-sm font-medium text-slate-600">برچسب‌ها (با کاما جدا کنید)</label>
                 <input value={form.tags} onChange={set("tags")} className={inputClass} />
               </div>
               <label className="flex cursor-pointer items-center gap-2 text-sm">
-                <input type="checkbox" checked={form.published} onChange={set("published")} className="h-4 w-4 accent-indigo-500" />
+                <input type="checkbox" checked={form.published} onChange={set("published")} className="h-4 w-4 accent-primary" />
                 منتشر شود
               </label>
               <label className="flex cursor-pointer items-center gap-2 text-sm">
-                <input type="checkbox" checked={form.featured} onChange={set("featured")} className="h-4 w-4 accent-indigo-500" />
+                <input type="checkbox" checked={form.featured} onChange={set("featured")} className="h-4 w-4 accent-primary" />
                 مقاله ویژه
               </label>
             </div>
           </div>
 
           {/* SEO */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+          <div className="soft-card rounded-3xl p-6">
             <button
               type="button"
               onClick={() => setSeoOpen((v) => !v)}
               className="flex w-full items-center justify-between"
             >
               <span className="flex items-center gap-2 text-sm font-bold">
-                <Search className="h-4 w-4 text-indigo-500" />
+                <Search className="h-4 w-4 text-primary" />
                 تنظیمات سئو
               </span>
               <ChevronDown className={`h-4 w-4 text-slate-400 transition-transform ${seoOpen ? "rotate-180" : ""}`} />
@@ -259,7 +259,7 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
             {seoOpen && (
               <div className="mt-4 space-y-4">
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">
+                  <label className="mb-1.5 block text-sm font-medium text-slate-600">
                     عنوان سئو (Meta Title)
                   </label>
                   <input
@@ -271,7 +271,7 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
                   <p className="mt-1 text-[11px] text-slate-400">{form.metaTitle.length}/60 حرف</p>
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">
+                  <label className="mb-1.5 block text-sm font-medium text-slate-600">
                     توضیحات سئو (Meta Description)
                   </label>
                   <textarea
@@ -284,7 +284,7 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
                   <p className="mt-1 text-[11px] text-slate-400">{form.metaDescription.length}/160 حرف</p>
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">
+                  <label className="mb-1.5 block text-sm font-medium text-slate-600">
                     کلمات کلیدی (با کاما جدا کنید)
                   </label>
                   <input
@@ -295,10 +295,10 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
                   />
                 </div>
                 {form.metaTitle && form.metaDescription && (
-                  <div className="rounded-xl bg-slate-50 p-3 dark:bg-white/5">
+                  <div className="rounded-xl bg-slate-50 p-3">
                     <p className="text-[11px] font-bold text-slate-400">پیش‌نمایش در گوگل:</p>
                     <p className="mt-1 truncate text-sm font-medium text-blue-600">{form.metaTitle}</p>
-                    <p className="mt-0.5 line-clamp-2 text-xs text-emerald-700 dark:text-emerald-400">nexatech.ir/blog/...</p>
+                    <p className="mt-0.5 line-clamp-2 text-xs text-emerald-700">nexatech.ir/blog/...</p>
                     <p className="mt-0.5 line-clamp-2 text-xs text-slate-500">{form.metaDescription}</p>
                   </div>
                 )}
@@ -306,7 +306,7 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
             )}
           </div>
 
-          <div className="flex items-center justify-center gap-1.5 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-3 text-xs text-emerald-600 dark:text-emerald-300">
+          <div className="flex items-center justify-center gap-1.5 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-3 text-xs text-emerald-600">
             <CheckCircle2 className="h-4 w-4" />
             پیش‌نویس به صورت خودکار ذخیره می‌شود
           </div>

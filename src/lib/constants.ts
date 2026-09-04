@@ -8,10 +8,10 @@ export const CATEGORY_LABELS: Record<string, string> = {
 
 export const CATEGORY_COLORS: Record<string, string> = {
   web: "bg-primary/10 text-primary border-primary/20",
-  app: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/20",
-  seo: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-500/20",
-  ecommerce: "bg-amber-500/10 text-amber-600 dark:text-amber-300 border-amber-500/20",
-  branding: "bg-teal-500/10 text-teal-700 dark:text-teal-300 border-teal-500/20",
+  app: "bg-sky-500/10 text-sky-700 border-sky-500/20",
+  seo: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
+  ecommerce: "bg-amber-500/10 text-amber-600 border-amber-500/20",
+  branding: "bg-teal-500/10 text-teal-700 border-teal-500/20",
 };
 
 export const ORDER_STATUS_LABELS: Record<string, string> = {
@@ -23,11 +23,11 @@ export const ORDER_STATUS_LABELS: Record<string, string> = {
 };
 
 export const ORDER_STATUS_COLORS: Record<string, string> = {
-  new: "bg-blue-500/10 text-blue-600 dark:text-blue-300 border-blue-500/20",
-  in_review: "bg-amber-500/10 text-amber-600 dark:text-amber-300 border-amber-500/20",
-  in_progress: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border-indigo-500/20",
-  completed: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 border-emerald-500/20",
-  rejected: "bg-rose-500/10 text-rose-600 dark:text-rose-300 border-rose-500/20",
+  new: "bg-blue-500/10 text-blue-600 border-blue-500/20",
+  in_review: "bg-amber-500/10 text-amber-600 border-amber-500/20",
+  in_progress: "bg-primary/10 text-primary border-primary/20",
+  completed: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
+  rejected: "bg-rose-500/10 text-rose-600 border-rose-500/20",
 };
 
 export const SERVICE_OPTIONS = [

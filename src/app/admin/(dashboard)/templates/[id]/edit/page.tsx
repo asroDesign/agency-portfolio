@@ -23,7 +23,7 @@ export default async function EditTemplatePage({ params }: { params: Promise<{ i
   return (
     <div>
       <h1 className="text-2xl font-extrabold sm:text-3xl">ویرایش قالب</h1>
-      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">در حال ویرایش «{template.title}»</p>
+      <p className="mt-1 text-sm text-slate-500">در حال ویرایش «{template.title}»</p>
       <div className="mt-6 space-y-6">
         <TemplateForm initial={template} categories={categories} addons={addonsList} />
         <TemplateContentManager templateId={id} />

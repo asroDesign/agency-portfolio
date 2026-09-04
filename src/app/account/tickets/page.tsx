@@ -32,29 +32,29 @@ export default async function AccountTicketsPage() {
   return (
     <div>
       <h1 className="text-2xl font-extrabold sm:text-3xl">تیکت‌های من</h1>
-      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">پشتیبانی قالب‌های خریداری‌شده</p>
+      <p className="mt-1 text-sm text-slate-500">پشتیبانی قالب‌های خریداری‌شده</p>
 
       {tickets.length === 0 ? (
-        <div className="mt-10 rounded-3xl border border-dashed border-slate-300 py-16 text-center dark:border-white/15">
+        <div className="mt-10 rounded-3xl border border-dashed border-slate-300 py-16 text-center">
           <LifeBuoy className="mx-auto h-12 w-12 text-slate-300" />
-          <p className="mt-4 font-semibold text-slate-600 dark:text-slate-300">هنوز تیکتی ارسال نکرده‌اید</p>
+          <p className="mt-4 font-semibold text-slate-600">هنوز تیکتی ارسال نکرده‌اید</p>
           <p className="mt-1 text-sm text-slate-400">از صفحه هر قالب می‌توانید تیکت پشتیبانی ارسال کنید.</p>
         </div>
       ) : (
         <div className="mt-6 space-y-3">
           {tickets.map((t) => (
-            <div key={t.id} className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
+            <div key={t.id} className="soft-card rounded-2xl p-4">
               <div className="flex flex-wrap items-center gap-2">
                 <h3 className="font-bold">{t.subject}</h3>
                 <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-medium ${
-                  t.status === "open" ? "bg-blue-500/10 text-blue-600 dark:text-blue-300"
-                  : t.status === "answered" ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
-                  : "bg-slate-500/10 text-slate-500 dark:text-slate-400"
+                  t.status === "open" ? "bg-blue-500/10 text-blue-600"
+                  : t.status === "answered" ? "bg-emerald-500/10 text-emerald-600"
+                  : "bg-slate-500/10 text-slate-500"
                 }`}>{STATUS_LABEL[t.status]}</span>
                 {t.templateTitle && <span className="text-xs text-slate-400">قالب: {t.templateTitle}</span>}
                 <span className="mr-auto text-xs text-slate-400">{formatDateTime(t.updatedAt)}</span>
               </div>
-              <p className="mt-2 line-clamp-2 text-sm text-slate-600 dark:text-slate-300">{t.message}</p>
+              <p className="mt-2 line-clamp-2 text-sm text-slate-600">{t.message}</p>
               <TicketThread ticketId={t.id} initialMessage={t.message} />
             </div>
           ))}

@@ -17,7 +17,7 @@ export default async function EditBlogPage({ params }: { params: Promise<{ id: s
   return (
     <div>
       <h1 className="text-2xl font-extrabold sm:text-3xl">ویرایش مقاله</h1>
-      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+      <p className="mt-1 text-sm text-slate-500">
         در حال ویرایش «{post.title}»
       </p>
       <div className="mt-6">

@@ -70,7 +70,7 @@ export function PurchaseBox({
         <div className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 text-base font-bold text-white">
           <CheckCircle2 className="h-5 w-5" /> این قالب را خریده‌اید
         </div>
-        <a href={`/api/download?type=template&id=${templateId}`} className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-300 px-6 py-3 text-sm font-semibold text-emerald-600 transition-colors hover:bg-emerald-500/10 dark:border-emerald-500/30 dark:text-emerald-300">
+        <a href={`/api/download?type=template&id=${templateId}`} className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-300 px-6 py-3 text-sm font-semibold text-emerald-600 transition-colors hover:bg-emerald-500/10">
           <Download className="h-4 w-4" /> دانلود قالب
         </a>
       </div>
@@ -81,27 +81,27 @@ export function PurchaseBox({
     <div className="space-y-3">
       {/* Addons */}
       {addons.length > 0 && (
-        <div className="rounded-2xl border border-slate-200 p-3 dark:border-white/10">
-          <h4 className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-200">
-            <Package className="h-4 w-4 text-indigo-500" /> ادان‌های قابل انتخاب
+        <div className="rounded-2xl border border-slate-200 p-3">
+          <h4 className="flex items-center gap-2 text-sm font-bold text-slate-700">
+            <Package className="h-4 w-4 text-primary" /> ادان‌های قابل انتخاب
           </h4>
           <div className="mt-2 space-y-2">
             {addons.map((a) => (
-              <label key={a.id} className="flex cursor-pointer items-start gap-2.5 rounded-xl border border-slate-100 p-2.5 transition-colors hover:border-indigo-200 dark:border-white/5 dark:hover:border-indigo-500/30">
+              <label key={a.id} className="flex cursor-pointer items-start gap-2.5 rounded-xl border border-slate-100 p-2.5 transition-colors hover:border-primary/25">
                 <input
                   type="checkbox"
                   checked={selected.has(a.id)}
                   onChange={() => toggle(a.id)}
-                  className="mt-0.5 h-4 w-4 shrink-0 accent-indigo-500"
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-primary"
                 />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    {a.type === "file" ? <FileText className="h-3.5 w-3.5 text-indigo-500" /> : <Settings2 className="h-3.5 w-3.5 text-emerald-500" />}
+                    {a.type === "file" ? <FileText className="h-3.5 w-3.5 text-primary" /> : <Settings2 className="h-3.5 w-3.5 text-emerald-500" />}
                     <span className="text-sm font-medium">{a.name}</span>
                   </div>
                   <p className="mt-0.5 text-xs text-slate-400">{a.description}</p>
                 </div>
-                <span className="shrink-0 text-sm font-bold text-slate-700 dark:text-slate-200">
+                <span className="shrink-0 text-sm font-bold text-slate-700">
                   {a.price > 0 ? formatNumber(a.price) : "رایگان"}
                 </span>
               </label>
@@ -111,9 +111,9 @@ export function PurchaseBox({
       )}
 
       {/* Total + buy */}
-      <div className="flex items-center justify-between rounded-2xl bg-slate-50 p-3 dark:bg-white/5">
-        <span className="text-sm text-slate-500 dark:text-slate-400">جمع کل</span>
-        <span className="text-lg font-extrabold text-slate-900 dark:text-white">
+      <div className="flex items-center justify-between rounded-2xl bg-slate-50 p-3">
+        <span className="text-sm text-slate-500">جمع کل</span>
+        <span className="text-lg font-extrabold text-slate-900">
           {formatNumber(total)} <span className="text-xs font-normal text-slate-400">تومان</span>
         </span>
       </div>
@@ -122,7 +122,7 @@ export function PurchaseBox({
         type="button"
         onClick={handleBuy}
         disabled={loading}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 py-3.5 text-base font-bold text-white shadow-xl shadow-indigo-500/25 transition-all hover:scale-[1.02] disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/25 transition-all hover:scale-[1.02] disabled:opacity-60"
       >
         {loading ? (
           <>

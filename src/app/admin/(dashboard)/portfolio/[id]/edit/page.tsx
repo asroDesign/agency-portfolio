@@ -16,7 +16,7 @@ export default async function EditPortfolioPage({ params }: { params: Promise<{ 
   return (
     <div>
       <h1 className="text-2xl font-extrabold sm:text-3xl">ویرایش نمونه‌کار</h1>
-      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">در حال ویرایش «{item.title}»</p>
+      <p className="mt-1 text-sm text-slate-500">در حال ویرایش «{item.title}»</p>
       <div className="mt-6">
         <PortfolioForm initial={item} />
       </div>

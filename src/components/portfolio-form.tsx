@@ -88,25 +88,25 @@ export function PortfolioForm({ initial }: { initial?: PortfolioItem }) {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition-colors focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 dark:border-white/10 dark:bg-white/5 dark:text-white";
+    "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="flex items-center justify-between">
-        <Link href="/admin/portfolio" className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-indigo-500 dark:text-slate-400">
+        <Link href="/admin/portfolio" className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 hover:text-primary">
           <ArrowRight className="h-4 w-4" /> بازگشت
         </Link>
-        <button type="submit" disabled={saving || uploading} className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 disabled:opacity-60">
+        <button type="submit" disabled={saving || uploading} className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 disabled:opacity-60">
           {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
           {isEdit ? "ذخیره تغییرات" : "افزودن نمونه‌کار"}
         </button>
       </div>
 
-      {error && <p className="rounded-xl bg-rose-500/10 px-4 py-3 text-sm text-rose-600 dark:text-rose-300">{error}</p>}
+      {error && <p className="rounded-xl bg-rose-500/10 px-4 py-3 text-sm text-rose-600">{error}</p>}
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="space-y-6 lg:col-span-2">
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+          <div className="soft-card rounded-3xl p-6">
             <label className="mb-1.5 block text-sm font-medium">عنوان <span className="text-rose-500">*</span></label>
             <input required value={form.title} onChange={set("title")} placeholder="مثلاً فروشگاه آنلاین" className={inputClass} />
 
@@ -125,17 +125,17 @@ export function PortfolioForm({ initial }: { initial?: PortfolioItem }) {
         </div>
 
         <div className="space-y-6">
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+          <div className="soft-card rounded-3xl p-6">
             <h3 className="text-sm font-bold">تصویر نمونه‌کار</h3>
             <div className="mt-3">
               {form.imageUrl ? (
-                <div className="relative overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
+                <div className="relative overflow-hidden rounded-xl border border-slate-200">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={form.imageUrl} alt="پیش‌نمایش" className="aspect-[16/10] w-full object-cover" />
                   <button type="button" onClick={() => setForm((f) => ({ ...f, imageUrl: "" }))} className="absolute left-2 top-2 rounded-full bg-slate-900/70 px-3 py-1 text-xs font-semibold text-white">حذف</button>
                 </div>
               ) : (
-                <label className="flex aspect-[16/10] cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 text-slate-400 transition-colors hover:border-indigo-400 hover:text-indigo-500 dark:border-white/15">
+                <label className="flex aspect-[16/10] cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 text-slate-400 transition-colors hover:border-primary hover:text-primary">
                   {uploading ? (
                     <>
                       <Loader2 className="h-8 w-8 animate-spin" />
@@ -154,11 +154,11 @@ export function PortfolioForm({ initial }: { initial?: PortfolioItem }) {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+          <div className="soft-card rounded-3xl p-6">
             <h3 className="text-sm font-bold">تنظیمات</h3>
             <div className="mt-4 space-y-4">
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">دسته‌بندی</label>
+                <label className="mb-1.5 block text-sm font-medium text-slate-600">دسته‌بندی</label>
                 <select value={form.category} onChange={set("category")} className={inputClass}>
                   <option value="web">وب‌سایت</option>
                   <option value="app">اپلیکیشن</option>
@@ -168,11 +168,11 @@ export function PortfolioForm({ initial }: { initial?: PortfolioItem }) {
                 </select>
               </div>
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-slate-600 dark:text-slate-300">ترتیب نمایش</label>
+                <label className="mb-1.5 block text-sm font-medium text-slate-600">ترتیب نمایش</label>
                 <input type="number" value={form.sortOrder} onChange={set("sortOrder")} className={inputClass} />
               </div>
               <label className="flex cursor-pointer items-center gap-2 text-sm">
-                <input type="checkbox" checked={form.featured} onChange={set("featured")} className="h-4 w-4 accent-indigo-500" />
+                <input type="checkbox" checked={form.featured} onChange={set("featured")} className="h-4 w-4 accent-primary" />
                 نمونه‌کار ویژه (نمایش در صفحه اصلی)
               </label>
             </div>

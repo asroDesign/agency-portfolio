@@ -33,20 +33,20 @@ export function AskQuestionForm({ templateId }: { templateId: string }) {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-colors focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500";
+    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20";
 
   if (status === "success") {
     return (
       <div className="flex flex-col items-center justify-center rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
         <CheckCircle2 className="h-12 w-12 text-emerald-500" />
         <h3 className="mt-3 text-lg font-bold">سوال شما ثبت شد!</h3>
-        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+        <p className="mt-1 text-sm text-slate-600">
           پاسخ شما پس از بررسی توسط تیم پشتیبانی در همین بخش نمایش داده می‌شود.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-4 rounded-xl border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-600 dark:border-white/15 dark:text-slate-300"
+          className="mt-4 rounded-xl border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-600"
         >
           پرسیدن سوال جدید
         </button>
@@ -85,7 +85,7 @@ export function AskQuestionForm({ templateId }: { templateId: string }) {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all hover:scale-[1.01] disabled:opacity-60"
+        className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all hover:scale-[1.01] disabled:opacity-60"
       >
         {status === "loading" ? (
           <>

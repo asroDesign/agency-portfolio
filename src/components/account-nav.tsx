@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, GraduationCap, Puzzle, LifeBuoy, LogOut, Globe, Menu, X } from "lucide-react";
-import { Logo } from "@/components/logo";
+import { LayoutDashboard, GraduationCap, Puzzle, LifeBuoy, LogOut, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const nav = [
@@ -26,9 +25,8 @@ export function AccountNav({ userName }: { userName: string }) {
   return (
     <>
       {/* Mobile */}
-      <div className="sticky top-0 z-40 mb-4 flex h-16 items-center justify-between border-b border-slate-200 bg-white/90 px-4 backdrop-blur dark:border-white/10 dark:bg-[#0b0d1a]/90 lg:hidden">
-        <Logo />
-        <nav className="flex items-center gap-1">
+      <div className="sticky top-20 z-30 -mx-1 mb-4 overflow-x-auto rounded-2xl border border-base-300 bg-base-100/80 p-1 shadow-sm backdrop-blur-xl lg:hidden">
+        <nav className="flex min-w-max items-center gap-1">
           {nav.map((item) => {
             const active = item.exact ? pathname === item.href : pathname.startsWith(item.href);
             return (
@@ -37,7 +35,7 @@ export function AccountNav({ userName }: { userName: string }) {
                 href={item.href}
                 className={cn(
                   "flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium",
-                  active ? "bg-indigo-50 text-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-300" : "text-slate-500 dark:text-slate-400",
+                  active ? "bg-primary text-primary-content shadow-sm" : "text-base-content/60 hover:bg-base-200 hover:text-base-content",
                 )}
               >
                 <item.icon className="h-4 w-4" />
@@ -50,14 +48,14 @@ export function AccountNav({ userName }: { userName: string }) {
 
       {/* Desktop sidebar */}
       <aside className="sticky top-20 hidden w-64 shrink-0 self-start lg:block">
-        <div className="rounded-3xl border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-white/5">
-          <div className="mb-3 flex items-center gap-3 border-b border-slate-100 px-2 pb-4 dark:border-white/5">
-            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-fuchsia-500 text-sm font-bold text-white">
+        <div className="soft-card rounded-3xl p-4">
+          <div className="mb-3 flex items-center gap-3 border-b border-base-300 px-2 pb-4">
+            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-content">
               {userName.charAt(0)}
             </div>
             <div className="min-w-0">
               <p className="truncate text-sm font-bold">{userName}</p>
-              <p className="text-xs text-slate-400">کاربر نکسا تک</p>
+              <p className="text-xs text-base-content/50">کاربر نکسا تک</p>
             </div>
           </div>
           <nav className="space-y-1">
@@ -70,8 +68,8 @@ export function AccountNav({ userName }: { userName: string }) {
                   className={cn(
                     "flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-colors",
                     active
-                      ? "bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white shadow-lg shadow-indigo-500/20"
-                      : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5",
+                      ? "bg-primary text-primary-content shadow-md shadow-primary/15"
+                      : "text-base-content/65 hover:bg-base-200 hover:text-base-content",
                   )}
                 >
                   <item.icon className="h-5 w-5" />
@@ -80,8 +78,8 @@ export function AccountNav({ userName }: { userName: string }) {
               );
             })}
           </nav>
-          <div className="mt-3 space-y-1 border-t border-slate-100 pt-3 dark:border-white/5">
-            <Link href="/" className="flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5">
+          <div className="mt-3 space-y-1 border-t border-base-300 pt-3">
+            <Link href="/" className="flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-base-content/65 hover:bg-base-200 hover:text-base-content">
               <Globe className="h-5 w-5" />
               مشاهده سایت
             </Link>

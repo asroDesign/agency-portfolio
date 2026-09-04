@@ -1,83 +1,99 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowUpLeft, CheckCircle2, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft, ArrowUpLeft, ChevronDown } from "lucide-react";
+import heroVector from "@/app/uploads/hero-vector.png";
+import { Container } from "@/components/ui";
 import { getSiteStats } from "@/lib/data";
 import { formatNumber } from "@/lib/utils";
-import { Container } from "@/components/ui";
 import { ParticleBackground } from "./particle-background";
 
 export async function HeroSection({ title, subtitle }: { title?: string | null; subtitle?: string | null }) {
   const stats = await getSiteStats();
+  const heroStats = [
+    { value: `${formatNumber(stats.clients)}+`, label: "مشتری راضی" },
+    { value: `${formatNumber(stats.projects)}+`, label: "پروژه تحویل‌شده" },
+    { value: `${formatNumber(stats.years)}+`, label: "سال تجربه" },
+  ];
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#091521] text-white">
-      <ParticleBackground />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_72%_28%,rgba(31,164,181,0.19),transparent_32%),linear-gradient(120deg,rgba(9,21,33,0.98),rgba(9,21,33,0.86)_58%,rgba(7,35,46,0.92))]" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f7fafc] to-transparent opacity-10" />
+    <section data-header-surface="light" className="relative isolate overflow-hidden bg-[linear-gradient(135deg,#f8fdff_0%,#eef9fd_48%,#e5f5fb_100%)] text-base-content">
+      <ParticleBackground
+        particleCount={52}
+        connectionDistance={185}
+        interactionRadius={200}
+        particleColor="#45bfd9"
+        lineColor="#65c9dc"
+        className="opacity-20"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_28%,rgba(54,190,218,0.16),transparent_30%),radial-gradient(circle_at_86%_78%,rgba(130,190,255,0.16),transparent_30%)]" />
 
       <Container className="relative">
-        <div className="grid min-h-[680px] items-center gap-16 py-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24 lg:py-28">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary-content/90">
-              <Sparkles className="h-4 w-4 text-primary" />
-              تیم برنامه‌نویسان حرفه‌ای نکسا تک
-            </div>
-            <h1 className="mt-7 text-4xl font-black leading-[1.2] tracking-tight sm:text-5xl lg:text-7xl">
+        <div className="mx-auto grid min-h-[100svh] w-full max-w-[1500px] items-center gap-10 pb-24 pt-24 sm:pt-28 lg:grid-cols-[minmax(400px,0.9fr)_minmax(0,1.1fr)] lg:gap-12 lg:pb-24 lg:pt-28 xl:gap-16">
+          <div className="max-w-3xl lg:order-1">
+            <span className="badge border-0 bg-primary/10 px-3 py-3 text-[11px] font-bold tracking-wide text-primary">
+              آژانس خلاقیت و فناوری
+            </span>
+            <h1 className="mt-6 text-4xl font-black leading-[1.18] tracking-tight text-neutral sm:text-5xl lg:text-6xl xl:text-[4.35rem]">
               {title ?? (
                 <>
-                  ایده‌های شما را به <span className="text-primary">محصولات دیجیتال</span> خیره‌کننده تبدیل می‌کنیم
+                  ایده‌هایی که <span className="text-primary">آینده را می‌سازند</span>
                 </>
               )}
             </h1>
-            <p className="mt-7 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-              {subtitle ?? "طراحی وب‌سایت، توسعه اپلیکیشن و ارتقای سئو — همه زیر یک سقف. ما با ترکیب خلاقیت و تکنولوژی، تجربه‌ای می‌سازیم که کاربران شما عاشقش شوند."}
+            <p className="mt-5 max-w-2xl text-base leading-8 text-base-content/65 sm:text-lg">
+              {subtitle ?? "تجربه‌های دیجیتال طراحی می‌کنیم، محصولات قدرتمند می‌سازیم و به برندهای مدرن برای رشد کمک می‌کنیم."}
             </p>
-            <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-              <Link href="/order" className="btn btn-primary btn-lg rounded-2xl px-7 shadow-lg shadow-primary/20">
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/order" className="btn btn-primary rounded-xl px-6 shadow-lg shadow-primary/20">
                 شروع پروژه
-                <ArrowLeft className="h-5 w-5" />
+                <ArrowLeft className="h-4 w-4" />
               </Link>
-              <Link href="/portfolio" className="btn btn-ghost btn-lg rounded-2xl border border-white/15 px-7 text-white hover:bg-white/10 hover:text-white">
+              <Link href="/portfolio" className="btn btn-outline rounded-xl border-base-content/20 bg-white/45 px-6 text-base-content hover:border-primary hover:bg-primary hover:text-primary-content">
                 مشاهده نمونه‌کارها
-                <ArrowUpLeft className="h-5 w-5" />
+                <ArrowUpLeft className="h-4 w-4" />
               </Link>
             </div>
-            <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-300">
-              {["تحویل شفاف و قابل پیش‌بینی", "پشتیبانی واقعی پس از تحویل"].map((item) => (
-                <span key={item} className="inline-flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary" />
-                  {item}
-                </span>
+
+            <dl className="mt-10 grid max-w-2xl grid-cols-3 border-y border-primary/15 py-4 sm:py-5">
+              {heroStats.map((stat) => (
+                <div key={stat.label} className="flex min-w-0 flex-col items-center gap-1 px-2 text-center sm:px-6">
+                  <dd className="text-2xl font-black leading-none tracking-tight text-primary sm:text-3xl">
+                    {stat.value}
+                  </dd>
+                  <dt className="text-[10px] font-medium leading-5 text-base-content/55 sm:text-xs">
+                    {stat.label}
+                  </dt>
+                </div>
               ))}
-            </div>
+            </dl>
           </div>
 
-          <div className="relative hidden min-h-[380px] lg:block" aria-hidden="true">
-            <div className="absolute inset-x-8 top-12 h-72 rounded-[2.5rem] border border-primary/20 bg-primary/[0.04] [transform:perspective(900px)_rotateY(-15deg)_rotateX(8deg)]" />
-            <div className="absolute inset-x-0 top-20 rounded-[2rem] border border-white/10 bg-slate-950/55 p-5 shadow-2xl backdrop-blur-sm [transform:perspective(900px)_rotateY(-15deg)_rotateX(8deg)]">
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <div className="flex gap-1.5"><i className="h-2.5 w-2.5 rounded-full bg-primary" /><i className="h-2.5 w-2.5 rounded-full bg-white/25" /><i className="h-2.5 w-2.5 rounded-full bg-white/25" /></div>
-                <span className="text-[10px] uppercase tracking-[0.25em] text-white/40">NEXA / DIGITAL SYSTEM</span>
-              </div>
-              <div className="grid grid-cols-[1fr_0.72fr] gap-4 pt-5">
-                <div className="space-y-3"><div className="h-3 w-3/5 rounded-full bg-primary/60" /><div className="h-2 w-4/5 rounded-full bg-white/15" /><div className="h-2 w-2/3 rounded-full bg-white/10" /><div className="mt-8 h-28 rounded-2xl bg-gradient-to-br from-primary/30 to-cyan-300/5" /></div>
-                <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-3"><div className="h-20 rounded-xl border border-primary/20 bg-primary/10" /><div className="mt-3 h-2 w-3/4 rounded-full bg-white/15" /><div className="mt-2 h-2 w-1/2 rounded-full bg-white/10" /></div>
-              </div>
-            </div>
-            <div className="absolute -bottom-2 -left-7 rounded-2xl border border-primary/20 bg-[#0d2632]/95 p-4 shadow-xl backdrop-blur-sm [transform:perspective(900px)_rotateY(-15deg)_rotateX(8deg)]">
-              <p className="text-xs text-slate-400">رشد تجربه کاربری</p><p className="mt-1 text-2xl font-black text-primary">+۸۶٪</p>
-            </div>
+          <div className="relative mx-auto hidden min-h-[620px] w-full max-w-[780px] items-center justify-center lg:order-2 lg:flex">
+            <div className="absolute left-1/2 top-1/2 size-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/20" />
+            <div className="absolute left-1/2 top-1/2 size-[410px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/15" />
+            <div className="absolute left-1/2 top-1/2 size-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/12" />
+            <div className="absolute left-1/2 top-1/2 size-[640px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/10" />
+            <div className="absolute left-1/2 top-1/2 size-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/8" />
+            <div className="absolute inset-x-8 bottom-8 top-8 rounded-full bg-primary/15 blur-3xl" />
+            <Image
+              src={heroVector}
+              alt="تصویری از طراحی و توسعه یک محصول دیجیتال"
+              priority
+              unoptimized
+              sizes="(min-width: 1536px) 820px, (min-width: 1024px) 48vw, 100vw"
+              className="relative z-10 h-auto w-[min(780px,100%)] scale-[1.08] object-contain drop-shadow-[0_28px_55px_rgba(49,132,164,0.18)]"
+            />
           </div>
-        </div>
-
-        <div className="relative -mb-14 grid translate-y-1/2 grid-cols-2 overflow-hidden rounded-3xl border border-white/10 bg-[#102433]/90 shadow-2xl shadow-black/20 backdrop-blur-md sm:grid-cols-4">
-          {[
-            { value: `${formatNumber(stats.projects)}+`, label: "پروژه موفق" },
-            { value: `${formatNumber(stats.clients)}+`, label: "مشتری راضی" },
-            { value: `${formatNumber(stats.years)}+`, label: "سال تجربه" },
-            { value: `${formatNumber(stats.team)}+`, label: "متخصص خلاق" },
-          ].map((stat) => <div key={stat.label} className="border-white/10 px-4 py-5 text-center sm:border-e last:border-e-0"><p className="text-2xl font-black text-primary sm:text-3xl">{stat.value}</p><p className="mt-1 text-xs text-slate-300 sm:text-sm">{stat.label}</p></div>)}
         </div>
       </Container>
+
+      <a href="#services" aria-label="رفتن به بخش خدمات" className="group absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-base-content/45 transition-colors hover:text-primary">
+        <span className="relative h-8 w-5 rounded-full border border-current">
+          <span className="animate-scroll-dot absolute inset-x-0 top-1.5 mx-auto h-1 w-1 rounded-full bg-current" />
+        </span>
+        <ChevronDown className="h-4 w-4 animate-bounce" />
+      </a>
     </section>
   );
 }

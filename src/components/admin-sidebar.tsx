@@ -56,12 +56,12 @@ export function AdminSidebar({ userName }: { userName?: string }) {
 
   const content = (
     <div className="flex h-full flex-col">
-      <div className="flex h-16 items-center justify-between border-b border-slate-200 px-5 dark:border-white/10">
+      <div className="flex h-16 items-center justify-between border-b border-base-300 px-5">
         <Logo />
         <button
           type="button"
           onClick={() => setOpen(false)}
-          className="text-slate-500 lg:hidden dark:text-slate-400"
+          className="btn btn-ghost btn-sm btn-square text-base-content/60 lg:hidden"
           aria-label="بستن منو"
         >
           <X className="h-5 w-5" />
@@ -82,8 +82,8 @@ export function AdminSidebar({ userName }: { userName?: string }) {
               className={cn(
                 "flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-colors",
                 active
-                  ? "bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-white shadow-lg shadow-indigo-500/20"
-                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white",
+                  ? "bg-primary text-primary-content shadow-md shadow-primary/15"
+                  : "text-base-content/65 hover:bg-base-200 hover:text-base-content",
               )}
             >
               <item.icon className="h-5 w-5" />
@@ -93,10 +93,10 @@ export function AdminSidebar({ userName }: { userName?: string }) {
         })}
       </nav>
 
-      <div className="space-y-1 border-t border-slate-200 p-3 dark:border-white/10">
+      <div className="space-y-1 border-t border-base-300 p-3">
         <Link
           href="/"
-          className="flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5"
+          className="flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-base-content/65 transition-colors hover:bg-base-200 hover:text-base-content"
         >
           <Globe className="h-5 w-5" />
           مشاهده سایت
@@ -110,7 +110,7 @@ export function AdminSidebar({ userName }: { userName?: string }) {
           خروج
         </button>
         {userName && (
-          <div className="px-4 pt-2 text-xs text-slate-400">{userName}</div>
+          <div className="px-4 pt-2 text-xs text-base-content/45">{userName}</div>
         )}
       </div>
     </div>
@@ -119,12 +119,12 @@ export function AdminSidebar({ userName }: { userName?: string }) {
   return (
     <>
       {/* Mobile header */}
-      <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-slate-200 bg-white/90 px-4 backdrop-blur dark:border-white/10 dark:bg-[#0b0d1a]/90 lg:hidden">
+      <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-base-300 bg-base-100/80 px-4 shadow-sm backdrop-blur-xl lg:hidden">
         <Logo />
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-600 dark:border-white/10 dark:text-slate-300"
+          className="btn btn-ghost btn-square border border-base-300 text-base-content/70"
           aria-label="باز کردن منو"
         >
           <Menu className="h-5 w-5" />
@@ -138,14 +138,14 @@ export function AdminSidebar({ userName }: { userName?: string }) {
             className="absolute inset-0 bg-slate-950/50 backdrop-blur-sm"
             onClick={() => setOpen(false)}
           />
-          <div className="absolute inset-y-0 right-0 w-72 max-w-[85%] border-l border-slate-200 bg-white shadow-2xl dark:border-white/10 dark:bg-[#0b0d1a]">
+          <div className="absolute inset-y-0 right-0 w-72 max-w-[85%] border-l border-base-300 bg-base-100 shadow-2xl">
             {content}
           </div>
         </div>
       )}
 
       {/* Desktop sidebar */}
-      <aside className="fixed inset-y-0 right-0 z-30 hidden w-64 border-l border-slate-200 bg-white dark:border-white/10 dark:bg-[#0a0c18] lg:block">
+      <aside className="fixed inset-y-0 right-0 z-30 hidden w-64 border-l border-base-300 bg-base-100/95 shadow-xl shadow-neutral/5 backdrop-blur-xl lg:block">
         {content}
       </aside>
     </>

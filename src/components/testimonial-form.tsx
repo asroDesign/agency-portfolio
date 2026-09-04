@@ -33,14 +33,14 @@ export function TestimonialForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-colors focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500";
+    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20";
 
   if (status === "success") {
     return (
       <div className="flex flex-col items-center justify-center rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-10 text-center">
         <CheckCircle2 className="h-12 w-12 text-emerald-500" />
         <h3 className="mt-4 text-lg font-bold">از نظر شما سپاسگزاریم!</h3>
-        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        <p className="mt-2 text-sm text-slate-600">
           نظر شما پس از بررسی توسط تیم ما نمایش داده می‌شود.
         </p>
       </div>
@@ -70,14 +70,14 @@ export function TestimonialForm() {
               onClick={() => setForm((f) => ({ ...f, rating: r }))}
               aria-label={`${r} ستاره`}
             >
-              <Star className={`h-6 w-6 transition-colors ${r <= form.rating ? "fill-amber-400 text-amber-400" : "text-slate-300 dark:text-white/15"}`} />
+              <Star className={`h-6 w-6 transition-colors ${r <= form.rating ? "fill-amber-400 text-amber-400" : "text-slate-300"}`} />
             </button>
           ))}
         </div>
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 disabled:opacity-60"
         >
           {status === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
           ثبت نظر

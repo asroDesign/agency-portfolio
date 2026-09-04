@@ -92,11 +92,11 @@ export function SettingsForm({ initial }: { initial: Record<string, string> }) {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition-colors focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 dark:border-white/10 dark:bg-white/5 dark:text-white";
+    "w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20";
 
   function Section({ title, children }: { title: string; children: React.ReactNode }) {
     return (
-      <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+      <div className="soft-card rounded-3xl p-6">
         <h2 className="text-lg font-bold">{title}</h2>
         <div className="mt-4 space-y-4">{children}</div>
       </div>
@@ -106,7 +106,7 @@ export function SettingsForm({ initial }: { initial: Record<string, string> }) {
   function Field({ label, value, onChange, dir, type = "text" }: { label: string; value: string; onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void; dir?: "ltr"; type?: string }) {
     return (
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300">{label}</label>
+        <label className="mb-1.5 block text-sm font-medium text-slate-700">{label}</label>
         <input type={type} dir={dir} value={value} onChange={onChange} className={inputClass} />
       </div>
     );
@@ -119,15 +119,15 @@ export function SettingsForm({ initial }: { initial: Record<string, string> }) {
           <Field label="متن لوگو" value={form.logo_text} onChange={set("logo_text")} />
         </div>
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300">تصویر لوگو</label>
+          <label className="mb-1.5 block text-sm font-medium text-slate-700">تصویر لوگو</label>
           {form.logo_image_url ? (
             <div className="flex items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={form.logo_image_url} alt="لوگو" className="h-14 w-auto max-w-[10rem] rounded-lg border border-slate-200 object-contain p-1 dark:border-white/10" />
-              <button type="button" onClick={() => setForm((f) => ({ ...f, logo_image_url: "" }))} className="rounded-xl border border-rose-200 px-3 py-2 text-sm text-rose-500 hover:bg-rose-500/10 dark:border-rose-500/20">حذف تصویر</button>
+              <img src={form.logo_image_url} alt="لوگو" className="h-14 w-auto max-w-[10rem] rounded-lg border border-slate-200 object-contain p-1" />
+              <button type="button" onClick={() => setForm((f) => ({ ...f, logo_image_url: "" }))} className="rounded-xl border border-rose-200 px-3 py-2 text-sm text-rose-500 hover:bg-rose-500/10">حذف تصویر</button>
             </div>
           ) : (
-            <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 p-4 text-sm text-slate-400 hover:border-indigo-400 hover:text-indigo-500 dark:border-white/15">
+            <label className="flex cursor-pointer items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 p-4 text-sm text-slate-400 hover:border-primary hover:text-primary">
               {uploadingLogo ? <Loader2 className="h-5 w-5 animate-spin" /> : <ImagePlus className="h-5 w-5" />}
               {uploadingLogo ? "در حال بارگذاری..." : "بارگذاری تصویر لوگو"}
               <input type="file" accept="image/*" onChange={uploadLogo} className="hidden" />
@@ -183,7 +183,7 @@ export function SettingsForm({ initial }: { initial: Record<string, string> }) {
       <Section title="اعضای تیم">
         <div className="space-y-3">
           {team.map((m, i) => (
-            <div key={i} className="flex flex-col gap-2 rounded-2xl border border-slate-100 p-3 dark:border-white/5 sm:flex-row sm:items-center">
+            <div key={i} className="flex flex-col gap-2 rounded-2xl border border-slate-100 p-3 sm:flex-row sm:items-center">
               <input
                 value={m.name}
                 onChange={(e) => updateMember(i, "name", e.target.value)}
@@ -205,7 +205,7 @@ export function SettingsForm({ initial }: { initial: Record<string, string> }) {
               <button
                 type="button"
                 onClick={() => setTeam((t) => t.filter((_, idx) => idx !== i))}
-                className="inline-flex shrink-0 items-center justify-center rounded-xl border border-rose-200 p-2.5 text-rose-500 hover:bg-rose-500/10 dark:border-rose-500/20"
+                className="inline-flex shrink-0 items-center justify-center rounded-xl border border-rose-200 p-2.5 text-rose-500 hover:bg-rose-500/10"
                 aria-label="حذف عضو"
               >
                 <Trash2 className="h-4 w-4" />
@@ -215,7 +215,7 @@ export function SettingsForm({ initial }: { initial: Record<string, string> }) {
           <button
             type="button"
             onClick={() => setTeam((t) => [...t, { name: "", role: "", initials: "" }])}
-            className="inline-flex items-center gap-2 rounded-xl border border-dashed border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:border-indigo-300 hover:text-indigo-600 dark:border-white/15 dark:text-slate-300"
+            className="inline-flex items-center gap-2 rounded-xl border border-dashed border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:border-primary/40 hover:text-primary"
           >
             <Plus className="h-4 w-4" />
             افزودن عضو
@@ -224,10 +224,10 @@ export function SettingsForm({ initial }: { initial: Record<string, string> }) {
       </Section>
 
       {error && (
-        <p className="rounded-xl bg-rose-500/10 px-4 py-3 text-sm text-rose-600 dark:text-rose-300">{error}</p>
+        <p className="rounded-xl bg-rose-500/10 px-4 py-3 text-sm text-rose-600">{error}</p>
       )}
 
-      <div className="sticky bottom-4 flex items-center justify-end gap-3 rounded-2xl border border-slate-200 bg-white/90 p-3 backdrop-blur dark:border-white/10 dark:bg-[#0b0d1a]/90">
+      <div className="sticky bottom-4 flex items-center justify-end gap-3 rounded-2xl border border-slate-200 bg-white/90 p-3 backdrop-blur">
         {saved && (
           <span className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-500">
             <CheckCircle2 className="h-4 w-4" />
@@ -237,7 +237,7 @@ export function SettingsForm({ initial }: { initial: Record<string, string> }) {
         <button
           type="submit"
           disabled={saving}
-          className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 disabled:opacity-60"
         >
           {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
           ذخیره تغییرات

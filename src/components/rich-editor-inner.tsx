@@ -142,7 +142,7 @@ export function RichEditorInner({
   onChange: (html: string) => void;
 }) {
   return (
-    <div dir="rtl" className="overflow-hidden rounded-xl border border-slate-200 [&_.ck-editor__editable]:min-h-[320px] dark:border-white/10">
+    <div dir="rtl" className="overflow-hidden rounded-xl border border-slate-200 [&_.ck-editor__editable]:min-h-[320px]">
       <CKEditor
         editor={ClassicEditor}
         config={editorConfig}

@@ -12,9 +12,9 @@ export default async function AccountLayout({ children }: { children: ReactNode 
   if (!session) redirect("/login?next=/account");
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0d1a] dark:text-white">
+    <div className="page-shell">
       <SiteHeader />
-      <div className="mx-auto flex max-w-6xl gap-8 px-4 py-8 sm:px-6">
+      <div className="site-container flex gap-8 py-8 lg:py-12">
         <AccountNav userName={session.name} />
         <main className="min-w-0 flex-1">{children}</main>
       </div>

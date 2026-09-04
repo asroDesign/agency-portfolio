@@ -24,7 +24,7 @@ export function CoursePlayer({
         {active ? (
           canView(active) ? (
             <div>
-              <div className="overflow-hidden rounded-3xl border border-slate-200 bg-black dark:border-white/10">
+              <div className="overflow-hidden rounded-3xl border border-slate-200 bg-black">
                 <div className="aspect-video">
                   {isEmbeddableVideo(active.videoUrl) ? (
                     <iframe
@@ -44,7 +44,7 @@ export function CoursePlayer({
                   )}
                 </div>
               </div>
-              <div className="mt-5 rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
+              <div className="mt-5 soft-card rounded-3xl p-6">
                 <h2 className="text-xl font-bold">{active.title}</h2>
                 {active.duration && (
                   <span className="mt-2 inline-flex items-center gap-1 text-xs text-slate-400">
@@ -52,13 +52,13 @@ export function CoursePlayer({
                     مدت: {active.duration}
                   </span>
                 )}
-                <p className="mt-3 leading-7 text-slate-600 dark:text-slate-300">{active.summary}</p>
+                <p className="mt-3 leading-7 text-slate-600">{active.summary}</p>
               </div>
             </div>
           ) : (
-            <div className="flex aspect-video flex-col items-center justify-center rounded-3xl border border-dashed border-slate-300 bg-slate-100 text-center dark:border-white/15 dark:bg-white/5">
+            <div className="flex aspect-video flex-col items-center justify-center rounded-3xl border border-dashed border-slate-300 bg-slate-100 text-center">
               <Lock className="h-12 w-12 text-slate-400" />
-              <p className="mt-4 font-semibold text-slate-600 dark:text-slate-300">
+              <p className="mt-4 font-semibold text-slate-600">
                 این جلسه قفل است
               </p>
               <p className="mt-1 text-sm text-slate-400">
@@ -75,7 +75,7 @@ export function CoursePlayer({
 
       {/* Session list */}
       <div className="space-y-2">
-        <h3 className="px-1 text-sm font-bold text-slate-500 dark:text-slate-400">
+        <h3 className="px-1 text-sm font-bold text-slate-500">
           سرفصل‌ها و جلسات ({sessions.length})
         </h3>
         <div className="max-h-[480px] space-y-2 overflow-y-auto pr-1">
@@ -90,8 +90,8 @@ export function CoursePlayer({
                 className={cn(
                   "flex w-full items-start gap-3 rounded-2xl border p-3 text-right transition-colors",
                   isActive
-                    ? "border-indigo-300 bg-indigo-50 dark:border-indigo-500/30 dark:bg-indigo-500/10"
-                    : "border-slate-200 bg-white hover:border-indigo-200 dark:border-white/10 dark:bg-white/5",
+                    ? "border-primary/40 bg-primary/10"
+                    : "border-slate-200 bg-white hover:border-primary/25",
                   !viewable && "cursor-not-allowed opacity-60",
                 )}
               >
@@ -99,8 +99,8 @@ export function CoursePlayer({
                   className={cn(
                     "mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold",
                     isActive
-                      ? "bg-gradient-to-br from-indigo-500 to-fuchsia-500 text-white"
-                      : "bg-slate-100 text-slate-500 dark:bg-white/5 dark:text-slate-400",
+                      ? "bg-primary text-white"
+                      : "bg-slate-100 text-slate-500",
                   )}
                 >
                   {i + 1}
@@ -109,7 +109,7 @@ export function CoursePlayer({
                   <div className="flex items-center gap-2">
                     <p className="truncate text-sm font-medium">{s.title}</p>
                     {s.isPreview && (
-                      <span className="shrink-0 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-300">
+                      <span className="shrink-0 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
                         پیش‌نمایش رایگان
                       </span>
                     )}
@@ -123,9 +123,9 @@ export function CoursePlayer({
                 </div>
                 <span className="mt-1 shrink-0">
                   {viewable ? (
-                    <PlayCircle className={cn("h-5 w-5", isActive ? "text-indigo-500" : "text-slate-300 dark:text-slate-600")} />
+                    <PlayCircle className={cn("h-5 w-5", isActive ? "text-primary" : "text-slate-300")} />
                   ) : (
-                    <Lock className="h-5 w-5 text-slate-300 dark:text-slate-600" />
+                    <Lock className="h-5 w-5 text-slate-300" />
                   )}
                 </span>
               </button>

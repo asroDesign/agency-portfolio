@@ -36,7 +36,7 @@ export function MessageActions({ id, read }: { id: string; read: boolean }) {
         onClick={toggle}
         disabled={busy !== null}
         title={read ? "علامت‌گذاری به‌عنوان خوانده‌نشده" : "علامت‌گذاری به‌عنوان خوانده‌شده"}
-        className="inline-flex items-center justify-center rounded-xl border border-slate-200 p-2 text-slate-500 transition-colors hover:border-indigo-300 hover:text-indigo-600 dark:border-white/10 dark:text-slate-300"
+        className="inline-flex items-center justify-center rounded-xl border border-slate-200 p-2 text-slate-500 transition-colors hover:border-primary/40 hover:text-primary"
       >
         {busy === "toggle" ? (
           <Loader2 className="h-4 w-4 animate-spin" />
@@ -51,7 +51,7 @@ export function MessageActions({ id, read }: { id: string; read: boolean }) {
         onClick={del}
         disabled={busy !== null}
         aria-label="حذف"
-        className="inline-flex items-center justify-center rounded-xl border border-rose-200 p-2 text-rose-500 transition-colors hover:bg-rose-500/10 dark:border-rose-500/20"
+        className="inline-flex items-center justify-center rounded-xl border border-rose-200 p-2 text-rose-500 transition-colors hover:bg-rose-500/10"
       >
         {busy === "delete" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
       </button>

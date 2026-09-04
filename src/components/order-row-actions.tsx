@@ -41,7 +41,7 @@ export function OrderStatusSelect({ id, status }: { id: string; status: string }
         )}
       >
         {STATUSES.map((s) => (
-          <option key={s} value={s} className="bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-200">
+          <option key={s} value={s} className="bg-white text-slate-800">
             {ORDER_STATUS_LABELS[s]}
           </option>
         ))}
@@ -71,7 +71,7 @@ export function OrderDeleteButton({ id, title }: { id: string; title: string }) 
       type="button"
       onClick={del}
       disabled={deleting}
-      className="inline-flex items-center justify-center rounded-xl border border-rose-200 p-2 text-rose-500 transition-colors hover:bg-rose-500/10 dark:border-rose-500/20"
+      className="inline-flex items-center justify-center rounded-xl border border-rose-200 p-2 text-rose-500 transition-colors hover:bg-rose-500/10"
       aria-label="حذف"
     >
       {deleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}

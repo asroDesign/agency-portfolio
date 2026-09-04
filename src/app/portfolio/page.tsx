@@ -22,28 +22,28 @@ export default async function PortfolioPage() {
   const [items, stats] = await Promise.all([getAllPortfolio(), getSiteStats()]);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-[#0b0d1a] dark:text-white">
+    <div className="page-shell">
       <SiteHeader />
 
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-        <div className="pointer-events-none absolute -top-20 right-1/4 h-64 w-64 rounded-full bg-indigo-500/25 blur-3xl animate-float" />
-        <div className="pointer-events-none absolute top-10 left-1/4 h-64 w-64 rounded-full bg-fuchsia-500/20 blur-3xl animate-float-slow" />
+        <div className="pointer-events-none absolute -top-20 right-1/4 h-64 w-64 rounded-full bg-primary/25 blur-3xl animate-float" />
+        <div className="pointer-events-none absolute top-10 left-1/4 h-64 w-64 rounded-full bg-primary/10 blur-3xl animate-float-slow" />
 
-        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+        <div className="relative page-main sm:py-20">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-600 dark:text-indigo-300">
+            <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               <Sparkles className="h-4 w-4" />
               مجموعه آثار ما
             </div>
             <h1 className="animate-fade-up mt-6 text-4xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">
               کارهایی که به آن‌ها{" "}
-              <span className="text-gradient bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500">
+              <span className="text-gradient bg-gradient-to-r from-secondary to-primary">
                 افتخار می‌کنیم
               </span>
             </h1>
-            <p className="animate-fade-up mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
+            <p className="animate-fade-up mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600">
               هر پروژه داستانی از اعتماد، خلاقیت و تلاش است. روی هر نمونه‌کار می‌توانید دموی زنده و
               پیش‌نمایش واقعی آن را مشاهده کنید.
             </p>
@@ -56,9 +56,9 @@ export default async function PortfolioPage() {
               { value: `${formatNumber(stats.clients)}+`, label: "مشتری راضی" },
               { value: `${formatNumber(stats.years)}+`, label: "سال تجربه" },
             ].map((s) => (
-              <div key={s.label} className="rounded-3xl border border-slate-200 bg-white/70 p-5 text-center backdrop-blur dark:border-white/10 dark:bg-white/5">
-                <div className="text-gradient bg-gradient-to-r from-indigo-500 to-fuchsia-500 text-2xl font-extrabold sm:text-4xl">{s.value}</div>
-                <div className="mt-1 text-xs text-slate-500 dark:text-slate-400 sm:text-sm">{s.label}</div>
+              <div key={s.label} className="soft-card rounded-3xl p-5 text-center backdrop-blur">
+                <div className="text-2xl font-extrabold text-primary sm:text-4xl">{s.value}</div>
+                <div className="mt-1 text-xs text-slate-500 sm:text-sm">{s.label}</div>
               </div>
             ))}
           </div>
@@ -66,13 +66,13 @@ export default async function PortfolioPage() {
       </section>
 
       {/* Portfolio grid */}
-      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+      <section className="site-container pb-20">
         <PortfolioGrid items={items} />
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-600 px-6 py-16 text-center text-white sm:px-16">
+      <section className="site-container pb-20">
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-secondary to-primary px-6 py-16 text-center text-white sm:px-16">
           <div className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-white/15 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
           <div className="relative mx-auto max-w-2xl">
@@ -89,7 +89,7 @@ export default async function PortfolioPage() {
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
                 href="/order"
-                className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-base font-bold text-indigo-600 shadow-xl transition-transform hover:scale-105"
+                className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-base font-bold text-primary shadow-xl transition-transform hover:scale-105"
               >
                 ثبت سفارش پروژه
                 <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-1" />
