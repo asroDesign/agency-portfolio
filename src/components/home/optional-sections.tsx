@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowLeft, MessageSquareQuote } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import { SectionArt } from "./section-art";
 import { getFeaturedPosts, getPublishedCourses } from "@/lib/catalog";
 import { BlogCard } from "@/components/blog/blog-card";
 import { CourseCard } from "@/components/courses/course-card";
@@ -22,7 +23,8 @@ export function TestimonialFormSection({ title, subtitle }: { title?: string | n
   return (
     <section className="section-shell relative overflow-hidden bg-base-200/55" aria-labelledby="feedback-heading">
       <Container>
-        <MessageSquareQuote aria-hidden="true" className="pointer-events-none absolute left-5 top-8 h-16 w-16 text-primary/5 sm:left-12 sm:h-20 sm:w-20" />
+        <SectionArt variant="feedback" className="absolute left-6 top-32 hidden w-40 opacity-75 xl:block 2xl:left-16 2xl:w-48" />
+        <SectionArt variant="conversation" className="absolute bottom-24 right-6 hidden w-36 opacity-55 xl:block 2xl:right-16 2xl:w-44" />
         <div className="relative mx-auto max-w-3xl">
           <header className="text-center">
             <p className="text-sm font-bold text-primary">بازخورد شما</p>

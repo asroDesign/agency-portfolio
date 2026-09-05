@@ -3,12 +3,14 @@ import { ArrowLeft } from "lucide-react";
 import { ServiceCard } from "@/components/portfolio/service-card";
 import { getServices } from "@/lib/data";
 import { Container, SectionHeading } from "@/components/ui";
+import { SectionArt } from "./section-art";
 
 export async function ServicesSection({ title, subtitle }: { title?: string | null; subtitle?: string | null }) {
   const services = await getServices();
   return (
-    <section id="services" className="section-shell">
-      <Container>
+    <section id="services" className="section-shell relative isolate overflow-hidden">
+      <SectionArt variant="path" />
+      <Container className="relative">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <SectionHeading

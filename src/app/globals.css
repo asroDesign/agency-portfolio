@@ -174,6 +174,73 @@ body {
   border-radius: 48% 48% 46% 46% / 24% 24% 22% 22%;
 }
 
+/* Homepage details: keep hover movement separate from entrance animation. */
+.home-content .section-shell article {
+  transition-property: translate, border-color, background-color, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+.home-content .section-shell article:focus-within {
+  border-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
+}
+
+.home-content .section-shell .btn,
+.home-content .section-shell a {
+  text-underline-offset: 4px;
+}
+
+.home-content .section-shell .btn svg {
+  transition: translate 200ms ease;
+}
+
+.home-content .section-shell .btn:hover svg {
+  translate: -3px 0;
+}
+
+.home-content .section-shell article[data-reveal="pending"] {
+  opacity: 0;
+}
+
+.home-content .section-shell article[data-reveal="visible"] {
+  animation: home-reveal 550ms ease-out;
+}
+
+@keyframes home-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.home-content #work {
+  background: radial-gradient(circle at 20% 0%, #dff4fb, transparent 42%), #edf7fd;
+}
+
+.home-content #services {
+  background: radial-gradient(circle at 5% 35%, #ecfaff, transparent 38%);
+}
+
+.art-float {
+  animation: decorative-float 7s ease-in-out infinite;
+}
+
+@keyframes decorative-float {
+  50% { transform: translate(0, -9px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art-float,
+  .home-content .section-shell article[data-reveal],
+  .home-content .live-preview-hover:hover .live-preview-frame {
+    animation: none;
+  }
+  .home-content .section-shell article[data-reveal] { opacity: 1; }
+  .home-content .section-shell article,
+  .home-content .section-shell article *,
+  .home-content .section-shell .btn svg {
+    transition: none;
+  }
+}
+
 .soft-card {
   border: 0;
   background: var(--color-base-100);

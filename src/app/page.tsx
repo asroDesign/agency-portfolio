@@ -17,6 +17,7 @@ import { getPageSections } from "@/lib/data";
 import { buildMetadata } from "@/lib/seo";
 import type { PageSection } from "@/db/schema";
 import type { ReactNode } from "react";
+import { HomepageMotion } from "@/components/home/homepage-motion";
 
 export const dynamic = "force-dynamic";
 
@@ -75,7 +76,8 @@ export default async function HomePage() {
   return (
     <div className="min-h-screen bg-base-100 text-base-content">
       <SiteHeader />
-      {renderedSections}
+      <main className="home-content">{renderedSections}</main>
+      <HomepageMotion />
       <SiteFooter />
     </div>
   );
