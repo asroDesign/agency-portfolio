@@ -8,7 +8,7 @@ interface SiteConfig {
 }
 
 const SiteConfigContext = createContext<SiteConfig>({
-  logoText: "نکساتک",
+  logoText: "تیم برنامه نویسی آسرو",
   logoImageUrl: null,
 });
 

@@ -30,11 +30,13 @@ export function TemplateGallery({ images, title }: { images: string[]; title: st
             <button
               key={i}
               type="button"
+              aria-label={`نمایش تصویر ${i + 1} از ${title}`}
+              aria-pressed={i === active}
               onClick={() => setActive(i)}
               className={cn(
                 "h-20 w-28 shrink-0 overflow-hidden rounded-xl border-2 transition-all",
                 i === active
-                  ? "border-primary ring-2 ring-primary/30"
+                  ? "border-primary"
                   : "border-transparent opacity-70 hover:opacity-100",
               )}
             >

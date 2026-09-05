@@ -16,8 +16,8 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://nexatech.ir";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "نکسا تک | طراحی وب‌سایت، اپلیکیشن و سئو",
-    template: "%s | نکسا تک",
+    default: "تیم برنامه نویسی آسرو | طراحی وب‌سایت، اپلیکیشن و سئو",
+    template: "%s | تیم برنامه نویسی آسرو",
   },
   description:
     "تیم حرفه‌ای برنامه‌نویسان برای طراحی وب‌سایت، توسعه اپلیکیشن و ارتقای سئو. پروژه خود را به ما بسپارید.",
@@ -34,13 +34,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fa_IR",
-    siteName: "نکسا تک",
-    title: "نکسا تک | طراحی وب‌سایت، اپلیکیشن و سئو",
+    siteName: "Asro Development Team",
+    title: "تیم برنامه نویسی آسرو | طراحی وب‌سایت، اپلیکیشن و سئو",
     description: "تیم حرفه‌ای برنامه‌نویسان برای طراحی وب‌سایت، توسعه اپلیکیشن و ارتقای سئو.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "نکسا تک",
+    title: "Asro Development Team",
     description: "طراحی وب‌سایت، اپلیکیشن و سئو",
   },
 };

@@ -33,10 +33,10 @@ export const getSettingsMap = cache(async () => {
 export const getSiteConfig = cache(async () => {
   const map = await getSettingsMap();
   return {
-    logoText: map.get("logo_text") || "نکساتک",
+    logoText: map.get("logo_text")?.replace(/نکسا ?تک|نکساتک/gi, "تیم برنامه نویسی آسرو") || "تیم برنامه نویسی آسرو",
     logoImageUrl: map.get("logo_image_url") || null,
     footerAbout: map.get("footer_about") || "تیم حرفه‌ای برنامه‌نویسان برای طراحی وب‌سایت، توسعه اپلیکیشن و ارتقای سئو.",
-    copyright: map.get("footer_copyright") || "نکسا تک — تمامی حقوق محفوظ است.",
+    copyright: map.get("footer_copyright")?.replace(/نکسا ?تک|نکساتک/gi, "تیم برنامه نویسی آسرو") || "تیم برنامه نویسی آسرو — تمامی حقوق محفوظ است.",
   };
 });
 

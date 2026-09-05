@@ -16,8 +16,8 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata("/about", {
-    title: "درباره ما | نکسا تک",
-    description: "آشنایی با تیم نکسا تک؛ برنامه‌نویسان حرفه‌ای در زمینه وب‌سایت، اپلیکیشن و سئو.",
+    title: "درباره ما | تیم برنامه نویسی آسرو",
+    description: "آشنایی با تیم برنامه نویسی آسرو؛ برنامه‌نویسان حرفه‌ای در زمینه وب‌سایت، اپلیکیشن و سئو.",
     keywords: ["درباره ما", "تیم برنامه نویسی"],
   });
 }
@@ -77,7 +77,7 @@ export default async function AboutPage() {
                 <div className="pointer-events-none absolute inset-y-0 inset-x-[7%] -z-10">
                   <IllustrationRings />
                 </div>
-                <Image src={aboutIllustration} alt="لپ‌تاپ، کتاب‌ها و گیاهان؛ تصویرسازی تیم نکسا تک" unoptimized priority sizes="(min-width: 1024px) 50vw, 100vw" className="mx-auto h-auto w-full max-w-[780px] object-contain" />
+                <Image src={aboutIllustration} alt="لپ‌تاپ، کتاب‌ها و گیاهان؛ تصویرسازی تیم برنامه نویسی آسرو" unoptimized priority sizes="(min-width: 1024px) 50vw, 100vw" className="mx-auto h-auto w-full max-w-[780px] object-contain" />
               </div>
             </div>
           </Container>

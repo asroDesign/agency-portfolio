@@ -55,7 +55,7 @@ export function AccountNav({ userName }: { userName: string }) {
             </div>
             <div className="min-w-0">
               <p className="truncate text-sm font-bold">{userName}</p>
-              <p className="text-xs text-base-content/50">کاربر نکسا تک</p>
+              <p className="text-xs text-base-content/50">کاربر تیم برنامه نویسی آسرو</p>
             </div>
           </div>
           <nav className="space-y-1">

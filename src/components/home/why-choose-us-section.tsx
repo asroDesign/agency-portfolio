@@ -34,7 +34,7 @@ export function WhyChooseUsSection() {
       <Container>
         <div className="grid gap-12 xl:grid-cols-[0.85fr_1.45fr] xl:items-center xl:gap-12">
           <div className="text-right">
-            <p className="badge border-0 bg-primary/10 px-5 py-5 font-bold text-primary">چرا نکسا تک؟</p>
+            <p className="badge border-0 bg-primary/10 px-5 py-5 font-bold text-primary">چرا تیم برنامه نویسی آسرو؟</p>
             <h2 className="mt-3 max-w-xl text-3xl font-black leading-[1.35] tracking-tight sm:text-4xl">
               فراتر از یک آژانس؛ <span className="text-primary">شریک بلندمدت</span> شما
             </h2>

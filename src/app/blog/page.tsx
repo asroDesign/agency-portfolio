@@ -4,6 +4,7 @@ import blogIllustration from "@/app/uploads/blog-vec.png";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import { Container } from "@/components/ui";
 import { IllustrationRings } from "@/components/ui/illustration-rings";
+import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { formatNumber } from "@/lib/utils";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -15,7 +16,7 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata("/blog", {
-    title: "وبلاگ آموزش طراحی وب و سئو | نکسا تک",
+    title: "وبلاگ آموزش طراحی وب و سئو | تیم برنامه نویسی آسرو",
     description: "مقالات و آموزش‌های کاربردی در دنیای طراحی وب، برنامه‌نویسی و سئو.",
     keywords: ["آموزش طراحی وب", "مقالات سئو", "برنامه نویسی"],
   });
@@ -28,12 +29,12 @@ export default async function BlogPage() {
     <div className="min-h-screen bg-base-100 text-base-content">
       <SiteHeader />
       <main>
-        <section className="relative z-10 isolate overflow-visible bg-[radial-gradient(circle_at_20%_45%,#d7f2f8,transparent_38%),linear-gradient(135deg,#f8fdff,#eaf7fc)] pb-24 pt-24 sm:pt-28">
+        <section className="relative z-10 isolate overflow-visible bg-[radial-gradient(circle_at_20%_45%,#d7f2f8,transparent_38%),linear-gradient(135deg,#f8fdff,#eaf7fc)] pb-8 pt-24 sm:pb-12 sm:pt-28">
           <Container>
             <div className="mx-auto grid w-full max-w-[1500px] items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
               <div>
-                <p className="badge border-0 bg-primary/10 px-4 py-4 text-xs font-bold text-primary">مجله نکسا</p>
-          <h1 className="mt-5 text-3xl font-black leading-relaxed tracking-tight sm:text-4xl lg:text-5xl">وبلاگ <span className="text-primary">نکسا تک</span></h1>
+                <p className="badge border-0 bg-primary/10 px-4 py-4 text-xs font-bold text-primary">مجله تیم آسرو</p>
+          <h1 className="mt-5 text-3xl font-black leading-relaxed tracking-tight sm:text-4xl lg:text-5xl">وبلاگ <span className="text-primary">تیم آسرو</span></h1>
           <p className="mt-5 max-w-2xl text-base leading-8 text-base-content/65">
             مقالات، نکات و آموزش‌های کاربردی در دنیای طراحی و توسعه وب.
           </p>
@@ -47,8 +48,9 @@ export default async function BlogPage() {
               </div>
             </div>
           </Container>
+          <ScrollIndicator target="#blog-posts" label="مشاهده مقالات" />
         </section>
-        <section id="blog-posts" aria-labelledby="blog-posts-heading" className="section-shell scroll-mt-20 bg-[#edf7fd]">
+        <section id="blog-posts" aria-labelledby="blog-posts-heading" className="scroll-mt-20 bg-[#edf7fd] pb-[clamp(4rem,6vw,6.5rem)] pt-8 sm:pt-12">
           <Container>
             <div className="flex items-end justify-between gap-5">
               <div><p className="section-kicker">از وبلاگ ما</p><h2 id="blog-posts-heading" className="mt-2 text-2xl font-black sm:text-3xl">مقالات و آموزش‌ها</h2></div>

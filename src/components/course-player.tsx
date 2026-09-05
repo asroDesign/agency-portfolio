@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PlayCircle, Lock, Clock, CheckCircle2 } from "lucide-react";
+import { PlayCircle, Lock, Clock } from "lucide-react";
 import type { CourseSession } from "@/db/schema";
 import { cn } from "@/lib/utils";
 
@@ -18,9 +18,9 @@ export function CoursePlayer({
   const canView = (s: CourseSession) => hasAccess || s.isPreview;
 
   return (
-    <div className="grid gap-6 lg:grid-cols-3">
+    <div className="grid min-w-0 gap-6 2xl:grid-cols-[minmax(0,2fr)_minmax(240px,1fr)]">
       {/* Video + summary */}
-      <div className="lg:col-span-2">
+      <div className="min-w-0">
         {active ? (
           canView(active) ? (
             <div>
@@ -74,7 +74,7 @@ export function CoursePlayer({
       </div>
 
       {/* Session list */}
-      <div className="space-y-2">
+      <div className="min-w-0 space-y-3 rounded-3xl border border-base-content/8 bg-white/90 p-4">
         <h3 className="px-1 text-sm font-bold text-slate-500">
           سرفصل‌ها و جلسات ({sessions.length})
         </h3>
@@ -87,6 +87,8 @@ export function CoursePlayer({
                 key={s.id}
                 type="button"
                 onClick={() => viewable && setActiveId(s.id)}
+                aria-disabled={!viewable}
+                aria-current={isActive ? "true" : undefined}
                 className={cn(
                   "flex w-full items-start gap-3 rounded-2xl border p-3 text-right transition-colors",
                   isActive
@@ -106,8 +108,8 @@ export function CoursePlayer({
                   {i + 1}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <p className="truncate text-sm font-medium">{s.title}</p>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <p className="break-words text-sm font-medium leading-6">{s.title}</p>
                     {s.isPreview && (
                       <span className="shrink-0 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
                         پیش‌نمایش رایگان

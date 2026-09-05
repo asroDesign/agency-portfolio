@@ -108,7 +108,7 @@ export const blogPosts = pgTable("blog_posts", {
   content: text("content").notNull(),
   coverUrl: text("cover_url"),
   category: text("category").notNull().default("عمومی"),
-  author: text("author").notNull().default("تیم نکسا تک"),
+  author: text("author").notNull().default("تیم برنامه نویسی آسرو"),
   tags: text("tags").array(),
   metaTitle: text("meta_title"),
   metaDescription: text("meta_description"),
@@ -131,7 +131,7 @@ export const courses = pgTable("courses", {
   description: text("description").notNull(),
   coverUrl: text("cover_url"),
   level: text("level").notNull().default("مقدماتی"),
-  instructor: text("instructor").notNull().default("تیم نکسا تک"),
+  instructor: text("instructor").notNull().default("تیم برنامه نویسی آسرو"),
   price: integer("price").notNull().default(0), // toman; 0 = free
   totalDuration: text("total_duration"),
   published: boolean("published").notNull().default(true),

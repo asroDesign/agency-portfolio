@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { PortfolioGrid } from "@/components/portfolio-grid";
 import { Container, SectionHeading } from "@/components/ui";
 import { IllustrationRings } from "@/components/ui/illustration-rings";
+import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { getAllPortfolio, getSiteStats } from "@/lib/data";
 import { buildMetadata } from "@/lib/seo";
 import { formatNumber } from "@/lib/utils";
@@ -16,8 +17,8 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata("/portfolio", {
-    title: "نمونه‌کارهای طراحی وب و اپلیکیشن | نکسا تک",
-    description: "مشاهده نمونه‌کارهای تیم نکسا تک در زمینه طراحی وب‌سایت، اپلیکیشن و سئو.",
+    title: "نمونه‌کارهای طراحی وب و اپلیکیشن | تیم برنامه نویسی آسرو",
+    description: "مشاهده نمونه‌کارهای تیم برنامه نویسی آسرو در زمینه طراحی وب‌سایت، اپلیکیشن و سئو.",
     keywords: ["نمونه کار", "پورتفولیو", "طراحی وب", "اپلیکیشن"],
   });
 }
@@ -34,7 +35,7 @@ export default async function PortfolioPage() {
     <div className="min-h-screen bg-base-100 text-base-content">
       <SiteHeader />
       <main>
-        <section className="relative z-10 isolate overflow-visible bg-[radial-gradient(circle_at_20%_45%,#d7f2f8,transparent_38%),linear-gradient(135deg,#f8fdff,#eaf7fc)] pb-24 pt-24 sm:pt-28">
+        <section className="relative z-10 isolate overflow-visible bg-[radial-gradient(circle_at_20%_45%,#d7f2f8,transparent_38%),linear-gradient(135deg,#f8fdff,#eaf7fc)] pb-8 pt-24 sm:pb-12 sm:pt-28">
           <Container>
             <div className="mx-auto grid w-full max-w-[1500px] items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
               <div>
@@ -66,9 +67,10 @@ export default async function PortfolioPage() {
               </div>
             </div>
           </Container>
+          <ScrollIndicator target="#portfolio-projects" label="مشاهده نمونه‌کارها" />
         </section>
 
-        <section id="portfolio-projects" aria-labelledby="portfolio-projects-heading" className="section-shell scroll-mt-20 bg-[#edf7fd]">
+        <section id="portfolio-projects" aria-labelledby="portfolio-projects-heading" className="scroll-mt-20 bg-[#edf7fd] pb-[clamp(4rem,6vw,6.5rem)] pt-8 sm:pt-12">
           <Container>
             <p className="section-kicker">نمونه‌کارها</p>
             <h2 id="portfolio-projects-heading" className="mt-2 text-2xl font-black sm:text-3xl">پروژه‌های ما</h2>

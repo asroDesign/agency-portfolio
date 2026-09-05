@@ -34,6 +34,7 @@ import {
 } from "@/lib/catalog";
 import { getSession } from "@/lib/auth";
 import { formatNumber, formatDate } from "@/lib/utils";
+import styles from "@/components/ui/detail-page.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -77,9 +78,9 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
     <div className="page-shell">
       <SiteHeader />
 
-      <main className="site-container py-10 lg:py-14">
+      <main className={`site-container ${styles.main}`}>
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-1 text-sm text-slate-400">
+        <nav aria-label="مسیر صفحه" className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm leading-7 text-slate-500">
           <Link href="/" className="inline-flex items-center gap-1 hover:text-primary">
             <Home className="h-3.5 w-3.5" />
             خانه
@@ -89,14 +90,14 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
             فروشگاه قالب
           </Link>
           <ChevronLeft className="h-4 w-4" />
-          <span className="text-slate-600">{template.title}</span>
+          <span aria-current="page" className="break-words text-slate-600">{template.title}</span>
         </nav>
 
-        <div className="mt-6 grid gap-8 lg:grid-cols-3">
+        <div className={`mt-6 ${styles.layout}`}>
           {/* Main content */}
-          <div className="lg:col-span-2">
+          <div>
             <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-2xl font-extrabold sm:text-3xl">{template.title}</h1>
+              <h1 className="text-2xl font-black leading-relaxed tracking-tight sm:text-3xl">{template.title}</h1>
               {template.version && (
                 <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
                   نسخه {template.version}
@@ -115,7 +116,7 @@ export default async function TemplateDetailPage({ params }: { params: Promise<{
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <row.icon className="h-5 w-5" />
                   </span>
-                  <div>
+                  <div className="min-w-0 break-words">
                     <p className="text-xs text-slate-400">{row.label}</p>
                     <p className="text-sm font-semibold">{row.value}</p>
                   </div>

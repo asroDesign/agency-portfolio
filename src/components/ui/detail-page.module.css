@@ -1,0 +1,11 @@
+.main { padding-block: 32px 48px; }
+.main :global(.soft-card) { border: 1px solid rgb(15 45 60 / 8%); background: rgb(255 255 255 / 90%); box-shadow: none; }
+.main :global(.btn), .main :global(.shadow) { box-shadow: none; }
+.main :is(a, button):focus-visible { outline: 2px solid var(--color-primary); outline-offset: 4px; }
+.main :global(.blog-content) { overflow-wrap: anywhere; }
+.layout { display: grid; gap: 24px; align-items: start; }
+.layout > * { min-width: 0; }
+@media (min-width: 1024px) {
+  .main { padding-block: 40px 64px; }
+  .layout { grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr); }
+}

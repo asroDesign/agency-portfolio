@@ -122,7 +122,7 @@ export function PurchaseBox({
         type="button"
         onClick={handleBuy}
         disabled={loading}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/25 transition-all hover:scale-[1.02] disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-primary/90 disabled:opacity-60"
       >
         {loading ? (
           <>

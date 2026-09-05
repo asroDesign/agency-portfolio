@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata("/courses", {
-    title: "دوره‌های آموزشی برنامه‌نویسی | نکسا تک",
+    title: "دوره‌های آموزشی برنامه‌نویسی | تیم برنامه نویسی آسرو",
     description: "دوره‌های ویدیویی طراحی وب، برنامه‌نویسی و سئو به صورت جلسه‌ای.",
     keywords: ["دوره آموزشی", "آموزش برنامه نویسی", "دوره سئو"],
   });
@@ -30,7 +30,7 @@ export default async function CoursesPage() {
         <CatalogHeader eyebrow="یادگیری" title="دوره‌های" accent="آموزشی"
           description="یادگیری گام‌به‌گام با ویدیوهای جلسه‌ای و خلاصه هر جلسه. برخی دوره‌ها رایگان و برخی با هزینه هستند."
           target="#courses-list" action="مشاهده دوره‌ها" illustration={coursesIllustration} />
-        <section id="courses-list" aria-labelledby="courses-heading" className="section-shell scroll-mt-20 bg-[#edf7fd]">
+        <section id="courses-list" aria-labelledby="courses-heading" className="scroll-mt-20 bg-[#edf7fd] pb-[clamp(4rem,6vw,6.5rem)] pt-8 sm:pt-12">
           <Container>
             <div className="flex items-end justify-between gap-5">
               <div><p className="section-kicker">آموزش و مهارت</p><h2 id="courses-heading" className="mt-2 text-2xl font-black sm:text-3xl">همه دوره‌ها</h2></div>

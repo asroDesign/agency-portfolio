@@ -22,13 +22,12 @@ export function TemplateCard({ template }: { template: Template }) {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:transition-none" />
         <div className="absolute inset-x-3 bottom-3 flex translate-y-2 items-center justify-center gap-2 opacity-0 transition-[transform,opacity] duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none">
-          <Link
-            href={`/templates/${template.slug}`}
+          <span
             className="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-bold text-slate-800 shadow"
           >
             <Eye className="h-3.5 w-3.5" />
             مشاهده جزئیات
-          </Link>
+          </span>
         </div>
       </Link>
       <div className="flex flex-1 flex-col p-5">

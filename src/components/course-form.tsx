@@ -16,7 +16,7 @@ export function CourseForm({ initial, sessions: initialSessions }: { initial?: C
     description: initial?.description ?? "",
     coverUrl: initial?.coverUrl ?? "",
     level: initial?.level ?? "مقدماتی",
-    instructor: initial?.instructor ?? "تیم نکسا تک",
+    instructor: initial?.instructor ?? "تیم برنامه نویسی آسرو",
     price: String(initial?.price ?? 0),
     totalDuration: initial?.totalDuration ?? "",
     published: initial?.published ?? true,

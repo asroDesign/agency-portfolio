@@ -41,7 +41,7 @@ export default async function AccountPage() {
           خوش آمدید
         </div>
         <h1 className="mt-2 text-3xl font-extrabold">{session.name} عزیز</h1>
-        <p className="mt-2 text-white/80">به پنل کاربری نکسا تک خوش آمدید.</p>
+        <p className="mt-2 text-white/80">به پنل کاربری تیم برنامه نویسی آسرو خوش آمدید.</p>
       </div>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">

@@ -15,8 +15,8 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata("/contact", {
-    title: "تماس با ما | نکسا تک",
-    description: "راه‌های ارتباط با تیم نکسا تک.",
+    title: "تماس با ما | تیم برنامه نویسی آسرو",
+    description: "راه‌های ارتباط با تیم برنامه نویسی آسرو.",
     keywords: ["تماس با ما", "پشتیبانی"],
   });
 }
@@ -25,7 +25,7 @@ export default async function ContactPage() {
   const map = await getSettingsMap();
   const phone = map.get("contact_phone") ?? "021-88776655";
   const mobile = map.get("contact_mobile") ?? "0912-345-6789";
-  const email = map.get("contact_email") ?? "hello@nexatech.ir";
+  const email = map.get("contact_email") ?? "hello@asro.dev";
   const address = map.get("contact_address") ?? "تهران، ایران";
   const socials = [
     { icon: InstagramIcon, label: "اینستاگرام", href: map.get("social_instagram") },
@@ -100,7 +100,7 @@ export default async function ContactPage() {
 
                 <aside className={styles.visual}>
                   <div className={styles.illustration}>
-                    <Image src={contactIllustration} alt="تصویرسازی ارتباط با نکسا تک" unoptimized priority sizes="(min-width: 1024px) 30vw, 100vw" className={styles.image} />
+                    <Image src={contactIllustration} alt="تصویرسازی ارتباط با تیم برنامه نویسی آسرو" unoptimized priority sizes="(min-width: 1024px) 30vw, 100vw" className={styles.image} />
                   </div>
                   <div className={styles.cta}>
                     <h2 className="text-2xl font-black leading-relaxed">پروژه بعدی شما<br />از یک گفت‌وگو شروع می‌شود.</h2>

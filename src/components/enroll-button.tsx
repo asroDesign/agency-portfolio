@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2, CreditCard, CheckCircle2, Lock, Play } from "lucide-react";
+import { Loader2, CreditCard, CheckCircle2, Play } from "lucide-react";
 
 export function EnrollButton({
   courseId,
@@ -55,7 +55,7 @@ export function EnrollButton({
       <button
         type="button"
         onClick={() => router.push("/account/courses")}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 text-base font-bold text-white shadow-lg shadow-emerald-500/25"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3.5 text-sm font-bold leading-6 text-white transition-colors hover:bg-emerald-600"
       >
         <CheckCircle2 className="h-5 w-5" />
         شما در این دوره ثبت‌نام کرده‌اید — مشاهده جلسات
@@ -69,7 +69,7 @@ export function EnrollButton({
         type="button"
         onClick={handleEnroll}
         disabled={loading}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-bold text-white shadow-xl shadow-primary/25 transition-all hover:scale-[1.02] disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-primary/90 disabled:opacity-60"
       >
         {loading ? (
           <>

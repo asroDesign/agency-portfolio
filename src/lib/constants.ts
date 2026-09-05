@@ -90,7 +90,7 @@ export const SECTION_META: Record<
   blog: {
     label: "وبلاگ",
     defaultTitle: "از وبلاگ ما",
-    defaultSubtitle: "آخرین مقالات و آموزش‌های تیم نکسا تک.",
+    defaultSubtitle: "آخرین مقالات و آموزش‌های تیم برنامه نویسی آسرو.",
     count: 3,
   },
   testimonials: {

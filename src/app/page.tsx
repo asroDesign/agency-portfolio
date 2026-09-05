@@ -23,7 +23,7 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata("/", {
-    title: "نکسا تک | طراحی وب‌سایت، اپلیکیشن و سئو",
+    title: "تیم برنامه نویسی آسرو | طراحی وب‌سایت، اپلیکیشن و سئو",
     description: "تیم حرفه‌ای برنامه‌نویسان برای طراحی وب‌سایت، توسعه اپلیکیشن و ارتقای سئو.",
     keywords: ["طراحی سایت", "سئو", "اپلیکیشن", "فروشگاه اینترنتی"],
   });

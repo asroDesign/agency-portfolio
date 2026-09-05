@@ -2,6 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 import { Container } from "@/components/ui";
 import { IllustrationRings } from "@/components/ui/illustration-rings";
+import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 
 export function CatalogHeader({ eyebrow, title, accent, description, target, action, illustration }: {
   eyebrow: string;
@@ -13,7 +14,7 @@ export function CatalogHeader({ eyebrow, title, accent, description, target, act
   illustration: StaticImageData;
 }) {
   return (
-    <section className="relative z-10 isolate overflow-visible bg-[radial-gradient(circle_at_20%_45%,#d7f2f8,transparent_38%),linear-gradient(135deg,#f8fdff,#eaf7fc)] pb-24 pt-24 sm:pt-28">
+    <section className="relative z-10 isolate overflow-visible bg-[radial-gradient(circle_at_20%_45%,#d7f2f8,transparent_38%),linear-gradient(135deg,#f8fdff,#eaf7fc)] pb-8 pt-24 sm:pb-12 sm:pt-28">
       <Container>
         <div className="mx-auto grid w-full max-w-[1500px] items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div>
@@ -34,6 +35,7 @@ export function CatalogHeader({ eyebrow, title, accent, description, target, act
           </div>
         </div>
       </Container>
+      <ScrollIndicator target={target} label={action} />
     </section>
   );
 }

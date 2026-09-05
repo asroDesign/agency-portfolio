@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Clock, Users, Video, GraduationCap } from "lucide-react";
+import { Clock, Users, Video, GraduationCap, ArrowRight } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { CoursePlayer } from "@/components/course-player";
@@ -9,6 +10,7 @@ import { HtmlContent } from "@/components/html-content";
 import { getCourseBySlug, getCourseSessions, getEnrolledCourseIds } from "@/lib/catalog";
 import { getSession } from "@/lib/auth";
 import { formatNumber } from "@/lib/utils";
+import styles from "@/components/ui/detail-page.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -31,9 +33,10 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
   return (
     <div className="page-shell">
       <SiteHeader />
-      <main className="site-container py-12 lg:py-16">
-        <div className="grid gap-8 lg:grid-cols-3">
-          <div className="lg:col-span-2">
+      <main className={`site-container ${styles.main}`}>
+        <Link href="/courses" className="mb-6 inline-flex min-h-11 items-center gap-2 rounded-xl text-sm font-medium text-primary"><ArrowRight aria-hidden="true" className="h-4 w-4" />بازگشت به دوره‌ها</Link>
+        <div className={styles.layout}>
+          <div>
             <CoursePlayer sessions={sessions} hasAccess={enrolled} />
           </div>
 
@@ -43,7 +46,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={course.coverUrl} alt={course.title} className="mb-5 aspect-[16/9] w-full rounded-2xl object-cover" />
               ) : null}
-              <h1 className="text-2xl font-extrabold leading-tight">{course.title}</h1>
+              <h1 className="text-2xl font-black leading-relaxed tracking-tight">{course.title}</h1>
               <div className="mt-3 text-sm leading-7 text-slate-600">
                 <HtmlContent html={course.description} />
               </div>
@@ -66,7 +69,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ s
                 </div>
                 <div className="rounded-2xl bg-slate-50 p-3 text-center">
                   <Users className="mx-auto h-5 w-5 text-amber-500" />
-                  <p className="mt-1 truncate text-sm font-bold">{course.instructor}</p>
+                  <p className="mt-1 break-words text-sm font-bold">{course.instructor}</p>
                   <p className="text-[11px] text-slate-400">مدرس</p>
                 </div>
               </div>

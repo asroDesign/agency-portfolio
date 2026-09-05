@@ -8,6 +8,8 @@ import { HtmlContent } from "@/components/html-content";
 import { BlogCard } from "@/components/blog-card";
 import { getPostBySlug, getPublishedPosts } from "@/lib/catalog";
 import { formatDate } from "@/lib/utils";
+import styles from "@/components/ui/detail-page.module.css";
+import blogStyles from "./post.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const keywords = post.keywords ? post.keywords.split(",").map((k) => k.trim()).filter(Boolean) : post.tags;
 
   return {
-    // absolute: true prevents the root layout template from appending "| نکسا تک" again
+    // absolute: true prevents the root layout template from appending the site name again
     title: { absolute: title },
     description,
     ...(keywords?.length ? { keywords } : {}),
@@ -43,17 +45,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const related = all.filter((p) => p.id !== post.id).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(180deg,#eef9fd,#f8fdff_40%)] text-base-content">
+    <div className="page-shell">
       <SiteHeader />
-      <main className="site-container py-12 lg:py-16">
-        <div className="mx-auto max-w-4xl">
+      <main className={`site-container ${styles.main}`}>
+        <div className="mx-auto max-w-6xl">
+        <Link href="/blog" className="mb-6 inline-flex min-h-11 items-center gap-2 rounded-xl text-sm font-medium text-primary">
+          <ArrowRight aria-hidden="true" className="h-4 w-4" />
+          بازگشت به وبلاگ
+        </Link>
         <article>
-          <div className="text-center">
-            <Link href="/blog" className="btn btn-ghost rounded-xl text-sm font-medium text-primary">
-              <ArrowRight className="h-4 w-4" />
-              بازگشت به وبلاگ
-            </Link>
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-4 text-xs text-base-content/60 sm:text-sm">
+          <header className="text-right">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-base-content/60 sm:text-sm">
               <span className="rounded-full bg-primary/10 px-3 py-1 font-medium text-primary">
                 {post.category}
               </span>
@@ -66,20 +68,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {post.author}
               </span>
             </div>
-            <h1 className="mt-5 text-balance text-3xl font-black leading-[1.5] tracking-tight sm:text-4xl">{post.title}</h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-base-content/65">{post.excerpt}</p>
-          </div>
+            <h1 className="mt-4 text-balance text-3xl font-black leading-[1.5] tracking-tight sm:text-4xl">{post.title}</h1>
+            <p className="mt-3 max-w-4xl text-base leading-8 text-base-content/65">{post.excerpt}</p>
+          </header>
 
           {post.coverUrl && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={post.coverUrl}
               alt={post.title}
-              className="mt-8 aspect-[21/9] w-full rounded-3xl object-cover"
+              className="mt-6 aspect-video max-h-[420px] w-full rounded-3xl border border-base-content/8 object-cover sm:aspect-[21/9]"
             />
           )}
 
-          <div className="mt-8 rounded-3xl border border-base-content/8 bg-white p-5 sm:p-10">
+          <div className={`mt-6 rounded-3xl border border-base-content/8 bg-white/90 p-5 sm:p-8 ${blogStyles.body}`}>
             <HtmlContent html={post.content} />
           </div>
 
@@ -96,10 +98,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
 
         {related.length > 0 && (
-          <section className="mt-16 sm:mt-20">
+          <section aria-labelledby="related-posts-heading" className="mt-12">
             <p className="section-kicker">بیشتر بخوانید</p>
-            <h2 className="mt-2 text-2xl font-black sm:text-3xl">مقالات مرتبط</h2>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <h2 id="related-posts-heading" className="mt-2 text-2xl font-black sm:text-3xl">مقالات مرتبط</h2>
+            <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((p) => (
                 <BlogCard key={p.id} post={p} />
               ))}

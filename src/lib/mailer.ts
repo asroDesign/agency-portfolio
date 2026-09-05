@@ -14,7 +14,7 @@ export async function sendMail({ to, subject, html }: MailOptions): Promise<bool
   const host = process.env.SMTP_HOST;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  const from = process.env.SMTP_FROM || "نکسا تک <no-reply@nexatech.ir>";
+  const from = process.env.SMTP_FROM || "Asro Development Team <no-reply@asro.dev>";
 
   if (!host || !user || !pass) {
     // No SMTP configured — log for demo purposes.

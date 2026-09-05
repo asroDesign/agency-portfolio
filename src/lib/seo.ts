@@ -4,7 +4,7 @@ import { pageMeta } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { cache } from "react";
 
-const SITE_NAME = "نکسا تک | طراحی وب‌سایت، اپلیکیشن و سئو";
+const SITE_NAME = "تیم برنامه نویسی آسرو | طراحی وب‌سایت، اپلیکیشن و سئو";
 
 export const getPageMeta = cache(async (path: string) => {
   const [meta] = await db.select().from(pageMeta).where(eq(pageMeta.path, path));

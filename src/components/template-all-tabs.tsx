@@ -59,14 +59,14 @@ export function TemplateAllTabs({
   return (
     <div>
       {/* Tab bar */}
-      <div className="flex flex-wrap gap-1 border-b border-slate-200">
+      <div className="flex gap-1 overflow-x-auto border-b border-slate-200">
         {tabs.map((t) => (
           <button
             key={t.key}
             type="button"
             onClick={() => setTab(t.key)}
             className={cn(
-              "inline-flex items-center gap-1.5 -mb-px border-b-2 px-3.5 py-3 text-sm font-semibold transition-colors",
+              "inline-flex shrink-0 items-center gap-1.5 border-b-2 px-3.5 py-3 text-sm font-semibold transition-colors",
               tab === t.key
                 ? "border-primary text-primary"
                 : "border-transparent text-slate-500 hover:text-slate-700",
@@ -88,7 +88,7 @@ export function TemplateAllTabs({
         {tab === "features" && (
           <ul className="grid gap-3 sm:grid-cols-2">
             {features.length === 0 ? (
-              <p className="col-span-2 py-8 text-center text-slate-400">امکاناتی ثبت نشده است.</p>
+              <li className="sm:col-span-2 py-8 text-center text-slate-400">امکاناتی ثبت نشده است.</li>
             ) : (
               features.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 rounded-2xl bg-slate-50 p-3 text-sm text-slate-700">
@@ -157,7 +157,7 @@ export function TemplateAllTabs({
         {tab === "faq" && (
           <div className="space-y-5">
             {/* Ask question form */}
-            <div className="rounded-2xl border border-primary/25/60 bg-primary/10/40 p-4">
+            <div className="rounded-2xl border border-primary/15 bg-primary/5 p-4">
               <h4 className="mb-3 flex items-center gap-2 text-sm font-bold text-slate-700">
                 <MessageCircleQuestion className="h-4 w-4 text-primary" />
                 سوال خود را بپرسید

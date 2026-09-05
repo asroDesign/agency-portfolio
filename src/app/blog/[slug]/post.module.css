@@ -1,0 +1,6 @@
+.body { box-shadow: none; }
+.body > :global(.blog-content) { max-width: 56rem; margin-inline: auto; }
+.body :global(.blog-content) > :first-child { margin-top: 0; }
+.body :global(.blog-content) > :last-child { margin-bottom: 0; }
+.body :global(.blog-content) :is(figure, pre) { max-width: 100%; overflow-x: auto; }
+.body :global(.blog-content) table { display: block; max-width: 100%; overflow-x: auto; }

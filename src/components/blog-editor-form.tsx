@@ -41,7 +41,7 @@ export function BlogEditorForm({ initial }: { initial?: InitialValue }) {
     content: initial?.content ?? "",
     coverUrl: initial?.coverUrl ?? "",
     category: initial?.category ?? "عمومی",
-    author: initial?.author ?? "تیم نکسا تک",
+    author: initial?.author ?? "تیم برنامه نویسی آسرو",
     tags: (initial?.tags ?? []).join("، "),
     metaTitle: initial?.metaTitle ?? "",
     metaDescription: initial?.metaDescription ?? "",

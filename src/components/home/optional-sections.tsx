@@ -16,7 +16,7 @@ export async function CoursesSection({ title, subtitle, count = 3 }: { title?: s
 export async function BlogSection({ title, subtitle, count = 3 }: { title?: string | null; subtitle?: string | null; count?: number }) {
   const posts = (await getFeaturedPosts()).slice(0, count);
   if (posts.length === 0) return null;
-  return <section className="section-shell bg-base-200/55"><Container><div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><SectionHeading eyebrow="مجله نکسا" title={title ?? "از دنیای دیجیتال بیشتر بدانید"} subtitle={subtitle} /><Link href="/blog" className="btn btn-outline rounded-xl border-base-300 text-base-content hover:border-primary hover:bg-primary hover:text-primary-content">همه مقالات <ArrowLeft className="h-4 w-4" /></Link></div><div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{posts.map((post) => <BlogCard key={post.id} post={post} />)}</div></Container></section>;
+  return <section className="section-shell bg-base-200/55"><Container><div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><SectionHeading eyebrow="مجله تیم آسرو" title={title ?? "از دنیای دیجیتال بیشتر بدانید"} subtitle={subtitle} /><Link href="/blog" className="btn btn-outline rounded-xl border-base-300 text-base-content hover:border-primary hover:bg-primary hover:text-primary-content">همه مقالات <ArrowLeft className="h-4 w-4" /></Link></div><div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{posts.map((post) => <BlogCard key={post.id} post={post} />)}</div></Container></section>;
 }
 
 export function TestimonialFormSection({ title, subtitle }: { title?: string | null; subtitle?: string | null }) {

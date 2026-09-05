@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata("/order", {
-    title: "سفارش پروژه | نکسا تک",
+    title: "سفارش پروژه | تیم برنامه نویسی آسرو",
     description: "ثبت سفارش پروژه طراحی وب‌سایت، اپلیکیشن یا سئو.",
     keywords: ["سفارش پروژه", "سفارش طراحی سایت"],
   });
@@ -78,7 +78,7 @@ export default async function OrderPage() {
         </div>
         <div className={styles.contactStrip}>
           {[
-            { icon: Mail, title: "ایمیل", lines: [settings.get("contact_email") ?? "hello@nexatech.ir"] },
+            { icon: Mail, title: "ایمیل", lines: [settings.get("contact_email") ?? "hello@asro.dev"] },
             { icon: MapPin, title: "آدرس", lines: [settings.get("contact_address") ?? "تهران، ایران"] },
             { icon: Clock, title: "ساعات کاری", lines: ["شنبه تا پنجشنبه", "۹ صبح تا ۶ عصر"] },
           ].map(({ icon: Icon, title, lines }) => <div key={title} className={styles.contactItem}><div><h3>{title}</h3>{lines.map(line => <p key={line} dir="auto">{line}</p>)}</div><span className={styles.mailIcon}><Icon aria-hidden="true" className="h-6 w-6" /></span></div>)}
