@@ -43,17 +43,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const related = all.filter((p) => p.id !== post.id).slice(0, 3);
 
   return (
-    <div className="page-shell">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#eef9fd,#f8fdff_40%)] text-base-content">
       <SiteHeader />
       <main className="site-container py-12 lg:py-16">
         <div className="mx-auto max-w-4xl">
         <article>
           <div className="text-center">
-            <Link href="/blog" className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+            <Link href="/blog" className="btn btn-ghost rounded-xl text-sm font-medium text-primary">
               <ArrowRight className="h-4 w-4" />
               بازگشت به وبلاگ
             </Link>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm text-slate-400">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-4 text-xs text-base-content/60 sm:text-sm">
               <span className="rounded-full bg-primary/10 px-3 py-1 font-medium text-primary">
                 {post.category}
               </span>
@@ -66,7 +66,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {post.author}
               </span>
             </div>
-            <h1 className="mt-5 text-3xl font-extrabold leading-tight sm:text-4xl">{post.title}</h1>
+            <h1 className="mt-5 text-balance text-3xl font-black leading-[1.5] tracking-tight sm:text-4xl">{post.title}</h1>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-base-content/65">{post.excerpt}</p>
           </div>
 
           {post.coverUrl && (
@@ -78,32 +79,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             />
           )}
 
-          <div className="mt-8 soft-card rounded-3xl p-6 sm:p-8">
+          <div className="mt-8 rounded-3xl border border-base-content/8 bg-white p-5 sm:p-10">
             <HtmlContent html={post.content} />
           </div>
 
           {post.tags && post.tags.length > 0 && (
             <div className="mt-6 flex flex-wrap gap-2">
               {post.tags.map((t) => (
-                <span key={t} className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+                <span key={t} className="badge h-auto border-primary/10 bg-primary/5 px-3 py-1.5 text-xs font-medium text-primary">
                   #{t}
                 </span>
               ))}
             </div>
           )}
         </article>
+        </div>
 
         {related.length > 0 && (
-          <section className="mt-16">
-            <h2 className="text-2xl font-bold">مقالات مرتبط</h2>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <section className="mt-16 sm:mt-20">
+            <p className="section-kicker">بیشتر بخوانید</p>
+            <h2 className="mt-2 text-2xl font-black sm:text-3xl">مقالات مرتبط</h2>
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((p) => (
                 <BlogCard key={p.id} post={p} />
               ))}
             </div>
           </section>
         )}
-        </div>
       </main>
       <SiteFooter />
     </div>

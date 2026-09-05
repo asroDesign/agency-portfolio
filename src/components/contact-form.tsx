@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2, CheckCircle2, Send } from "lucide-react";
+import { CheckCircle2, ChevronDown, LockKeyhole, Loader2, Paperclip, Send } from "lucide-react";
 
 export function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
 
-  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
   async function handleSubmit(e: React.FormEvent) {
@@ -36,20 +36,20 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20";
+    "w-full rounded-2xl border border-base-content/8 bg-white px-4 py-3 text-sm text-base-content shadow-none placeholder:text-base-content/35 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/15 motion-reduce:transition-none";
 
   if (status === "success") {
     return (
-      <div className="flex h-full flex-col items-center justify-center rounded-3xl border border-emerald-500/20 bg-emerald-500/5 p-10 text-center">
+      <div className="flex h-full flex-col items-center justify-center rounded-3xl bg-emerald-50 p-10 text-center">
         <CheckCircle2 className="h-14 w-14 text-emerald-500" />
         <h3 className="mt-4 text-xl font-bold">پیام شما ارسال شد!</h3>
-        <p className="mt-2 text-slate-600">
+        <p className="mt-2 text-sm leading-7 text-base-content/65">
           ممنون از پیام‌تان. در اسرع وقت با شما تماس می‌گیریم.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 rounded-full border border-slate-300 px-5 py-2 text-sm font-semibold text-slate-600 transition-colors hover:border-primary/40 hover:text-primary"
+          className="btn btn-outline mt-6 rounded-xl border-base-content/10 text-sm font-semibold shadow-none hover:border-primary hover:bg-primary hover:text-primary-content"
         >
           ارسال پیام جدید
         </button>
@@ -58,10 +58,10 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-slate-700">
+          <label className="mb-2 block text-sm font-medium text-base-content/75">
             نام و نام خانوادگی
           </label>
           <input
@@ -73,7 +73,7 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-slate-700">
+          <label className="mb-2 block text-sm font-medium text-base-content/75">
             ایمیل
           </label>
           <input
@@ -88,19 +88,29 @@ export function ContactForm() {
         </div>
       </div>
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-slate-700">
+        <label className="mb-2 block text-sm font-medium text-base-content/75">
           موضوع
         </label>
-        <input
+        <div className="relative">
+        <select
           required
           value={form.subject}
           onChange={update("subject")}
-          placeholder="موضوع پیام"
-          className={inputClass}
-        />
+          aria-label="موضوع پیام"
+          className={`${inputClass} appearance-none pl-10`}
+        >
+          <option value="">موضوع پیام را انتخاب کنید</option>
+          <option value="طراحی وب‌سایت">طراحی وب‌سایت</option>
+          <option value="توسعه اپلیکیشن">توسعه اپلیکیشن</option>
+          <option value="سئو و رشد">سئو و رشد</option>
+          <option value="مشاوره">مشاوره</option>
+          <option value="سایر">سایر</option>
+        </select>
+        <ChevronDown aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2" />
+        </div>
       </div>
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-slate-700">
+        <label className="mb-2 block text-sm font-medium text-base-content/75">
           پیام
         </label>
         <textarea
@@ -109,33 +119,44 @@ export function ContactForm() {
           value={form.message}
           onChange={update("message")}
           placeholder="پیام خود را بنویسید..."
-          className={`${inputClass} resize-none`}
+          className={`${inputClass} min-h-36 resize-y leading-7`}
         />
       </div>
 
       {status === "error" && (
-        <p className="rounded-xl bg-rose-500/10 px-4 py-3 text-sm text-rose-600">
+        <p role="alert" className="rounded-xl bg-error/10 px-4 py-3 text-sm text-error">
           {error}
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={status === "loading"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:scale-[1.02] disabled:opacity-60"
-      >
-        {status === "loading" ? (
-          <>
-            <Loader2 className="h-4 w-4 animate-spin" />
-            در حال ارسال...
-          </>
-        ) : (
-          <>
-            <Send className="h-4 w-4" />
-            ارسال پیام
-          </>
-        )}
-      </button>
+      <div className="flex items-center justify-between gap-4 pt-1">
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="btn btn-primary min-h-12 w-3/5 gap-2 rounded-xl border-0 text-sm font-semibold shadow-none transition-colors disabled:opacity-60"
+        >
+          {status === "loading" ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              در حال ارسال...
+            </>
+          ) : (
+            <>
+              <Send className="h-4 w-4" />
+              ارسال پیام
+            </>
+          )}
+        </button>
+        <button type="button" disabled title="ارسال پیوست هنوز در دسترس نیست" className="flex shrink-0 items-center gap-2 text-sm text-base-content/45 disabled:cursor-not-allowed">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-base-content/60">
+            <Paperclip className="h-5 w-5" />
+          </span>
+          <span className="hidden sm:block">پیوست فایل<br /><small>به‌زودی</small></span>
+        </button>
+      </div>
+      <p className="flex items-center justify-end gap-1 text-xs leading-6 text-base-content/50">
+        <LockKeyhole className="h-3.5 w-3.5" /> اطلاعات شما نزد ما محفوظ است و فقط برای پاسخگویی استفاده می‌شود.
+      </p>
     </form>
   );
 }

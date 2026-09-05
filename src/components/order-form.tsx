@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2, CheckCircle2, Rocket } from "lucide-react";
+import { Loader2, CheckCircle2, Rocket, Paperclip, LockKeyhole } from "lucide-react";
 import { SERVICE_OPTIONS, BUDGET_OPTIONS } from "@/lib/constants";
 
 export function OrderForm() {
@@ -131,10 +131,11 @@ export function OrderForm() {
         </p>
       )}
 
+      <div className="flex items-center justify-between gap-4">
       <button
         type="submit"
         disabled={status === "loading"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-base font-bold text-white shadow-xl shadow-primary/25 transition-all hover:scale-[1.02] disabled:opacity-60"
+        className="inline-flex min-h-12 w-3/5 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-bold text-white shadow-lg shadow-primary/15 transition-colors hover:bg-primary/90 disabled:opacity-60 sm:w-[46%]"
       >
         {status === "loading" ? (
           <>
@@ -148,7 +149,13 @@ export function OrderForm() {
           </>
         )}
       </button>
-      <p className="text-center text-xs text-slate-400">
+      <button type="button" disabled title="ارسال پیوست هنوز در دسترس نیست" className="flex shrink-0 items-center gap-3 text-sm text-slate-500 disabled:cursor-not-allowed">
+        <span className="hidden text-right sm:block">پیوست فایل<br /><small>به‌زودی</small></span>
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-slate-100"><Paperclip aria-hidden="true" className="h-6 w-6" /></span>
+      </button>
+      </div>
+      <p className="flex items-center gap-1 text-xs leading-5 text-slate-400">
+        <LockKeyhole aria-hidden="true" className="h-3 w-3 shrink-0" />
         با ثبت سفارش، متعهد به پرداخت هیچ مبلغی نیستید. ما ابتدا با شما تماس می‌گیریم.
       </p>
     </form>

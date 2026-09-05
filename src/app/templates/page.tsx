@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import templatesIllustration from "@/app/uploads/templates-vec.png";
+import { CatalogHeader } from "@/components/layout/catalog-header";
+import { Container } from "@/components/ui";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { TemplatesGrid } from "@/components/templates-grid";
@@ -22,19 +25,20 @@ export default async function TemplatesPage() {
   ]);
 
   return (
-    <div className="page-shell">
+    <div className="min-h-screen bg-base-100 text-base-content">
       <SiteHeader />
-      <main className="page-main">
-        <div className="page-intro">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">فروشگاه قالب</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-            قالب‌های آماده و حرفه‌ای برای وب‌سایت شما — خرید آسان، نصب سریع و پشتیبانی کامل.
-          </p>
-        </div>
+      <main>
+        <CatalogHeader eyebrow="فروشگاه قالب" title="فروشگاه" accent="قالب"
+          description="قالب‌های آماده و حرفه‌ای برای وب‌سایت شما — خرید آسان، نصب سریع و پشتیبانی کامل."
+          target="#templates-list" action="مشاهده قالب‌ها" illustration={templatesIllustration} />
 
-        <div className="mt-12">
-          <TemplatesGrid templates={templates} categories={categories} />
-        </div>
+        <section id="templates-list" aria-labelledby="templates-heading" className="section-shell scroll-mt-20 bg-[#edf7fd]">
+          <Container>
+            <p className="section-kicker">قالب‌های آماده</p>
+            <h2 id="templates-heading" className="mt-2 text-2xl font-black sm:text-3xl">همه قالب‌ها</h2>
+            <div className="mt-7"><TemplatesGrid templates={templates} categories={categories} /></div>
+          </Container>
+        </section>
       </main>
       <SiteFooter />
     </div>

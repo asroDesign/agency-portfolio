@@ -1,0 +1,69 @@
+.page { background: radial-gradient(ellipse at 0% 45%, #e6f8fd, transparent 45%), radial-gradient(ellipse at 100% 80%, #e2f7fc, transparent 40%), linear-gradient(180deg, #f9fdff, #effaff); }
+.main { position: relative; isolation: isolate; padding-block: 32px 28px; overflow-x: clip; }
+.hero { position: relative; z-index: 1; width: 100%; text-align: right; }
+.subtitle { margin: 14px 0 0; font-size: 16px; line-height: 2; color: #657b95; }
+.composition { position: relative; isolation: isolate; display: grid; gap: 20px; margin-top: 20px; align-items: start; }
+.formCard, .benefits, .quote { border: 1px solid rgb(192 226 237 / 16%); border-radius: 28px; background: rgb(255 255 255 / 90%); }
+.formCard { min-width: 0; padding: 24px 30px 20px; }
+.formHeader { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+.formHeader h2 { font-size: 26px; font-weight: 900; }
+.formHeader p { margin-top: 4px; font-size: 14px; line-height: 1.9; color: #657b95; }
+.mailIcon, .quoteIcon { display: grid; place-items: center; width: 68px; height: 68px; flex-shrink: 0; border-radius: 50%; background: #e3f7fb; color: var(--color-primary); }
+.formCard form > :not(:last-child) { margin-block-end: 12px; }
+.formCard input, .formCard select { height: 44px; border-color: #dbe5ef; background-color: transparent; }
+.formCard textarea { height: 96px; border-color: #dbe5ef; background-color: transparent; }
+.sidebar { position: relative; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.illustration { position: relative; height: 260px; }
+.image { position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); height: 300px; width: 110%; max-width: none; object-fit: contain; object-position: center bottom; }
+.benefits { position: relative; padding: 12px; display: grid; gap: 10px; }
+.benefit { display: flex; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 20px; background: #edfaf7; }
+.benefit:nth-child(2) { background: #eaf4ff; }
+.benefit:nth-child(3) { background: #f5f1ff; }
+.benefit p { line-height: 1.8; font-size: 13px; }
+.benefitIcon { display: grid; place-items: center; width: 56px; height: 56px; flex-shrink: 0; border-radius: 50%; background: #dcf6f0; color: #009ab3; }
+.benefit:nth-child(2) .benefitIcon { background: #d9ecff; color: #1986ff; }
+.benefit:nth-child(3) .benefitIcon { background: #eae2ff; color: #8556ff; }
+.quote { position: relative; padding: 28px 30px; }
+.quoteIcon { position: absolute; left: 28px; top: 26px; }
+.quote h2 { padding-left: 75px; font-size: 23px; font-weight: 900; line-height: 1.7; }
+.quote > p { margin-top: 14px; color: #657b95; font-size: 16px; line-height: 1.9; }
+.edgeLeaves { position: absolute; pointer-events: none; z-index: -1; width: 160px; height: 210px; color: #80d9c0; opacity: .65; }
+.leftLeaves { left: -12px; bottom: -30px; transform: rotate(-18deg); }
+.rightLeaves { right: -30px; bottom: 95px; transform: rotate(20deg); }
+.contactStrip { display: grid; gap: 24px; padding-top: 26px; max-width: 1160px; margin-inline: auto; }
+.contactItem { display: flex; flex-direction: row-reverse; align-items: center; justify-content: center; gap: 18px; font-size: 13px; }
+.contactItem h3 { font-weight: 700; }
+.contactItem p { max-width: 220px; color: #657b95; line-height: 1.7; margin-top: 2px; }
+.contactItem .mailIcon { width: 58px; height: 58px; }
+@media (min-width: 640px) {
+  .contactStrip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .contactItem + .contactItem { border-right: 1px solid #cbe6ef; }
+}
+@media (min-width: 1024px) {
+  .composition { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+  .sidebar { grid-column: 1; grid-row: 1; padding-top: 16px; }
+  .formCard { grid-column: 2; grid-row: 1; }
+  .illustration { position: absolute; top: -250px; left: 0; right: 0; height: 270px; z-index: -1; }
+  .image { height: 290px; }
+  .hero { width: calc((100% - 20px) * 2 / 3); margin-right: auto; margin-left: 0; }
+  .subtitle { min-height: 64px; }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .hero h1 { font-size: 32px; }
+  .image { width: 105%; }
+  .quote { padding: 24px; }
+  .quote h2 { font-size: 20px; padding-left: 58px; }
+  .quoteIcon { width: 48px; height: 48px; left: 20px; }
+}
+@media (max-width: 1023px) {
+  .formCard { order: 1; }
+  .sidebar { order: 2; }
+}
+@media (max-width: 639px) {
+  .main { padding-top: 28px; }
+  .formCard, .quote { padding: 22px; }
+  .formHeader { gap: 12px; }
+  .formHeader h2 { font-size: 22px; }
+  .formHeader .mailIcon { width: 48px; height: 48px; }
+  .contactItem { justify-content: flex-end; }
+}
