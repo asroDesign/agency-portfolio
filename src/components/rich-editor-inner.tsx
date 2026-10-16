@@ -49,6 +49,8 @@ import "ckeditor5/ckeditor5.css";
 
 // CKEditor config typing is notoriously strict; we keep a pragmatic cast here.
 const editorConfig = {
+  // Use a self-hosted license key, or GPL only for a GPL-compliant project.
+  licenseKey: process.env.NEXT_PUBLIC_CKEDITOR_LICENSE_KEY,
   toolbar: {
     items: [
       "undo",
