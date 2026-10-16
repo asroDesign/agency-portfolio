@@ -1,7 +1,7 @@
 import DOMPurify from "isomorphic-dompurify";
 
 /**
- * Renders admin-authored rich HTML content (CKEditor output) safely.
+ * Renders admin-authored rich HTML content (editor output) safely.
  * The content is sanitized server-side to strip any dangerous markup.
  */
 export function HtmlContent({ html }: { html: string }) {

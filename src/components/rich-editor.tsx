@@ -3,9 +3,9 @@
 import dynamic from "next/dynamic";
 import type { ComponentProps } from "react";
 
-// CKEditor is a heavy client-only library; load it lazily so it never
+// Editor is a client-only library; load it lazily so it never
 // runs during server rendering or blocks the initial page load.
-const CKEditor = dynamic(
+const Editor = dynamic(
   () =>
     import("@/components/rich-editor-inner").then((mod) => mod.RichEditorInner),
   {
@@ -18,6 +18,6 @@ const CKEditor = dynamic(
   },
 );
 
-export function RichEditor(props: ComponentProps<typeof CKEditor>) {
-  return <CKEditor {...props} />;
+export function RichEditor(props: ComponentProps<typeof Editor>) {
+  return <Editor {...props} />;
 }
